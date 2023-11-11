@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.controller.loginPageController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.loginPageController">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="492.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="64.0" fitWidth="54.0" layoutX="46.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/7733951sfda.png" />
+               </image>
+            </ImageView>
+            <Text fill="#263238" layoutX="46.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+               <font>
+                  <Font name="Concert One" size="42.0" />
+               </font>
+            </Text>
+            <Text fill="#6a7b83" layoutX="46.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to login to your recipe finder !">
+               <font>
+                  <Font name="Contrail One" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="userName" layoutX="46.0" layoutY="343.0" prefHeight="61.0" prefWidth="353.0" promptText="     username" style="-fx-background-radius: 15; -fx-background-color: #D9D9D9;">
+               <font>
+                  <Font name="Contrail One" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="password" layoutX="46.0" layoutY="432.0" opacity="0.72" prefHeight="61.0" prefWidth="353.0" promptText="    password" style="-fx-background-radius: 15; -fx-background-color: #D9D9D9;">
+               <font>
+                  <Font name="Contrail One" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Button fx:id="loginButton" layoutX="74.0" layoutY="531.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="289.0" style="-fx-background-radius: 17; -fx-background-color: #65386D;" text="Login" textFill="#e0e0e0">
+               <font>
+                  <Font name="Contrail One" size="25.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="448.0" prefHeight="800.0" prefWidth="752.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="696.0" fitWidth="693.0" layoutX="24.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@..\img\Mesa de trabajo 1.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="signupButton" layoutX="461.0" layoutY="727.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="click this to signup instead" textFill="#6a7b83" underline="true">
+               <font>
+                  <Font name="Contrail One" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
