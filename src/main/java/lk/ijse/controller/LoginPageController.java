@@ -19,13 +19,7 @@ public class LoginPageController {
     @FXML
     private TextField userName;
     @FXML
-    private PasswordField passwordField;
-
-
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    private PasswordField passwordField;36
 
 
     public LoginPageController() {}
@@ -54,11 +48,6 @@ public class LoginPageController {
         }
     }
 
-    private void switchToDashboard() {
-
-    }
-
-
 
     private boolean performLogin(String username, String password) {
         // Replace this with your actual login logic
@@ -67,8 +56,10 @@ public class LoginPageController {
     }
 
     @FXML
-    public void toggleSignupLogin() {
-//        loginPage.setVisible(!loginPage.isVisible());
-//        signupPage.setVisible(!signupPage.isVisible());
+    public void toggleSignupLogin() throws IOException {
+        //change Scene to signup page
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/signup_page.fxml"));
+        Stage window = (Stage) userName.getScene().getWindow();
+        window.setScene(new Scene(rootNode, 1200,800));
     }
 }
