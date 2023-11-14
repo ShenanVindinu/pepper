@@ -14,9 +14,9 @@
     <children>
         <AnchorPane layoutX="719.0" layoutY="-10.0" prefHeight="841.0" prefWidth="569.0" style="-fx-background-color: #ffffff;">
             <children>
-                <ImageView fitHeight="64.0" fitWidth="54.0" layoutX="80.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="113.0" fitWidth="216.0" layoutX="325.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../img/7733951sfda.png" />
+                        <Image url="@../img/7733951%20%5BRecovered%5D%202.png" />
                     </image>
                 </ImageView>
                 <Text fill="#263238" layoutX="80.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Signup">

@@ -1,16 +1,14 @@
 package lk.ijse.dto.tm;
 
 public class userTm {
-    private int id;
+    private String id;
     private String userName;
-    private String firstName;
-    private String lastName;
+    private String password;
 
 
-    public userTm(int id, String userName, String firstName, String lastName) {
+    public userTm(String id, String userName, String password) {
         this.id = id;
         this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.password = password;
     }
 }
