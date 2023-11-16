@@ -70,7 +70,7 @@
 
             <Button fx:id="signupButton" layoutX="461.0" layoutY="727.0" mnemonicParsing="false" onAction="#toggleSignupLogin" style="-fx-background-color: transparent;" text="click this to signup instead" textFill="#6a7b83" underline="true">
                <font>
-                  <Font name="Contrail One" size="18.0" />
+                  <Font name="Arial" size="18.0" />
                </font>
             </Button>
 <!--            <Button fx:id="signupButton" layoutX="461.0" layoutY="727.0" mnemonicParsing="false" onAction="#signupPage" style="-fx-background-color: transparent;" text="click this to signup instead" textFill="#6a7b83" underline="true">-->

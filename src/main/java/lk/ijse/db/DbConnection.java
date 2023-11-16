@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class dbConnection {
-    private static dbConnection dbConnection;
+public class DbConnection {
+    private static DbConnection dbConnection;
     private Connection connection;
 
-    private dbConnection() throws SQLException {
+    private DbConnection() throws SQLException {
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/pepper",
                 "root",
@@ -16,8 +16,8 @@ public class dbConnection {
         );
     }
 
-    public static dbConnection getInstance() throws SQLException {
-        return (null == dbConnection) ? dbConnection = new dbConnection() : dbConnection;
+    public static DbConnection getInstance() throws SQLException {
+        return (null == dbConnection) ? dbConnection = new DbConnection() : dbConnection;
     }
 
     public Connection getConnection() {

@@ -1,2 +1,5 @@
-package lk.ijse.dto;public class userDto {
+package lk.ijse.dto;
+
+
+public class userDto {
 }

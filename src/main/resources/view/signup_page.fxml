@@ -14,7 +14,7 @@
     <children>
         <AnchorPane layoutX="719.0" layoutY="-10.0" prefHeight="841.0" prefWidth="569.0" style="-fx-background-color: #ffffff;">
             <children>
-                <ImageView fitHeight="113.0" fitWidth="216.0" layoutX="325.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="113.0" fitWidth="216.0" layoutX="177.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../img/7733951%20%5BRecovered%5D%202.png" />
                     </image>
@@ -37,12 +37,12 @@
                         <Cursor fx:constant="TEXT" />
                     </cursor>
                 </TextField>
-                <Button fx:id="loginButton" layoutX="112.0" layoutY="583.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="289.0" style="-fx-background-radius: 17; -fx-background-color: #65386D;" text="Signup" textFill="#e0e0e0">
+                <Button fx:id="loginButton" layoutX="112.0" layoutY="583.0" mnemonicParsing="false" onAction="#signiup" prefHeight="61.0" prefWidth="289.0" style="-fx-background-radius: 17; -fx-background-color: #65386D;" text="Signup" textFill="#e0e0e0">
                     <font>
                         <Font name="Contrail One" size="25.0" />
                     </font>
                 </Button>
-            <PasswordField layoutX="80.0" layoutY="465.0" prefHeight="61.0" prefWidth="353.0" promptText="    password" style="-fx-background-radius: 15; -fx-background-color: #F3F3F3;">
+            <PasswordField fx:id="password" layoutX="80.0" layoutY="465.0" prefHeight="61.0" prefWidth="353.0" promptText="    password" style="-fx-background-radius: 15; -fx-background-color: #F3F3F3;">
                <font>
                   <Font size="17.0" />
                </font>
@@ -51,12 +51,12 @@
         </AnchorPane>
       <AnchorPane layoutX="-11.0" layoutY="-12.0" prefHeight="845.0" prefWidth="703.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Button fx:id="signupButton" layoutX="59.0" layoutY="773.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Back to login" textFill="#6a7b83" underline="true">
+            <Button fx:id="backToLogin" layoutX="59.0" layoutY="773.0" mnemonicParsing="false" onAction="#backToLoginButton" style="-fx-background-color: transparent;" text="Back to login" textFill="#6a7b83" underline="true">
                <font>
-                  <Font name="Contrail One" size="18.0" />
+                  <Font name="Arial" size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="683.0" fitWidth="679.0" layoutX="52.0" layoutY="81.0">
+            <ImageView fitHeight="683.0" fitWidth="718.0" layoutX="41.0" layoutY="81.0">
                <image>
                   <Image url="@../img/Mesa%20de%20trabajo%202.png" />
                </image>

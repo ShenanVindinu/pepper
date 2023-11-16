@@ -29,10 +29,10 @@ public class LoginPageController {
         String username = userName.getText();
         String password = passwordField.getText();
 
-        // Now you can pass 'username' and 'password' to your login logic
+        // passing 'username' and 'password' to your login logic
         boolean isLoggedIn = performLogin(username, password);
 
-        // Add logic to handle the result of the login attempt
+        // logic to handle the result of the login attempt
         if (isLoggedIn) {
             // Successful login
             System.out.println("Login successful!");
@@ -50,9 +50,7 @@ public class LoginPageController {
 
 
     private boolean performLogin(String username, String password) {
-        // Replace this with your actual login logic
-        // Example: Check against a database, file, or any authentication mechanism
-        return username.equals("shenan") && password.equals("1234");
+        return username.equals("Shenan") && password.equals("1234");
     }
 
     @FXML

@@ -86,7 +86,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="100.0" prefWidth="350.0" />
-            <Button fx:id="LogoutButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="516.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Logout" textFill="WHITE">
+            <Button fx:id="LogoutButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="516.0" mnemonicParsing="false" onAction="#logout" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Logout" textFill="WHITE">
                <padding>
                   <Insets left="40.0" />
                </padding>
@@ -111,7 +111,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="searchButton" layoutX="1026.0" layoutY="33.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="132.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" textFill="WHITE">
+      <Button fx:id="searchButton" layoutX="1026.0" layoutY="33.0" mnemonicParsing="false" onAction="#searchRecipe" prefHeight="50.0" prefWidth="132.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -121,7 +121,7 @@
             <Image url="@../icons/icons8-search-64.png" />
          </image>
       </ImageView>
-      <TextField layoutX="324.0" layoutY="117.0" prefHeight="50.0" prefWidth="331.0" promptText="   Type Recipe Id to Add to Wishlist" style="-fx-background-color: #F3F3F3; -fx-background-radius: 45;" />
+      <TextField fx:id="wishList_ids" layoutX="324.0" layoutY="117.0" prefHeight="50.0" prefWidth="331.0" promptText="   Type Recipe Id to Add to Wishlist" style="-fx-background-color: #F3F3F3; -fx-background-radius: 45;" />
       <Button fx:id="addToWishlist" layoutX="576.0" layoutY="117.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="78.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" text="Add" textFill="WHITE">
          <font>
             <Font size="16.0" />
