@@ -15,17 +15,18 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardController">
    <children>
-      <VBox prefHeight="800.0" prefWidth="277.0" style="-fx-background-color: A3B763;">
+      <VBox prefHeight="800.0" prefWidth="277.0" style="-fx-background-color: #AF2655;">
          <children>
             <Pane prefHeight="242.0" prefWidth="350.0">
                <children>
-                  <ImageView fitHeight="166.0" fitWidth="136.0" layoutX="85.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="208.0" fitWidth="132.0" layoutX="73.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/7733951%20%5BRecovered%5D%203.png" />
+                        <Image url="@../img/7733951%20%5BRecovered%5D%2033.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
+            <Pane prefHeight="80.0" prefWidth="277.0" />
             <Button fx:id="findRecipe" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Find Recipes" textFill="WHITE">
                <padding>
                   <Insets left="40.0" />
@@ -101,9 +102,10 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Pane prefHeight="36.0" prefWidth="277.0" />
          </children>
       </VBox>
-      <TextField fx:id="searchBar" layoutX="324.0" layoutY="33.0" prefHeight="50.0" prefWidth="834.0" promptText="Enter Ingredients" style="-fx-background-radius: 45; -fx-background-color: #F3F3F3;" AnchorPane.leftAnchor="324.0" AnchorPane.rightAnchor="42.0">
+      <TextField fx:id="searchBar" layoutX="324.0" layoutY="33.0" prefHeight="50.0" prefWidth="827.0" promptText="Enter Ingredients" style="-fx-background-radius: 45; -fx-background-color: #F3F3F3;" AnchorPane.leftAnchor="324.0" AnchorPane.rightAnchor="49.0">
          <padding>
             <Insets left="30.0" />
          </padding>
@@ -111,7 +113,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="searchButton" layoutX="1026.0" layoutY="33.0" mnemonicParsing="false" onAction="#searchRecipe" prefHeight="50.0" prefWidth="132.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" textFill="WHITE">
+      <Button fx:id="searchButton" layoutX="1026.0" layoutY="33.0" mnemonicParsing="false" onAction="#searchRecipe" prefHeight="50.0" prefWidth="123.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
