@@ -13,33 +13,6 @@ import java.util.List;
 public class RecipeModel {
 
 
-//    public static RecipeDto allRecipe() throws SQLException {
-//
-//        Connection connection = DbConnection.getInstance().getConnection ();
-//
-//        String sql = "SELECT * FROM recipe";
-//        PreparedStatement pstm = connection.prepareStatement(sql);
-//
-//        ResultSet resultSet = pstm.executeQuery();
-//
-//        RecipeDto dto = null;
-//
-//        if(resultSet.next()) {
-//            String recipe_id = resultSet.getString(1);
-//            String recipe_name = resultSet.getString(2);
-//            String ingredient_name = resultSet.getString(3);
-//
-//            dto = new RecipeDto(recipe_id,recipe_name,ingredient_name);
-//        }
-//
-//        return dto;
-//
-//
-//
-//
-//    }
-
-
 
     public static List<RecipeDto> findRecipesByIngredients(String enteredIngredients) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();

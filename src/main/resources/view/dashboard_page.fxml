@@ -41,7 +41,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="categoriesButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="252.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Categories" textFill="WHITE">
+            <Button fx:id="categoriesButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="252.0" mnemonicParsing="false" onAction="#categories" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Categories" textFill="WHITE">
                <padding>
                   <Insets left="40.0" />
                </padding>
@@ -56,7 +56,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="profileButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="340.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Profile" textFill="WHITE">
+            <Button fx:id="profileButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="340.0" mnemonicParsing="false" onAction="#profile" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Profile" textFill="WHITE">
                <padding>
                   <Insets left="40.0" />
                </padding>
@@ -71,7 +71,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="WishlistButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="428.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Wishlist" textFill="WHITE">
+            <Button fx:id="WishlistButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="428.0" mnemonicParsing="false" onAction="#wishlist" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Wishlist" textFill="WHITE">
                <padding>
                   <Insets left="40.0" />
                </padding>

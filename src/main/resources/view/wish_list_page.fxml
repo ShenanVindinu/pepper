@@ -27,7 +27,7 @@
                     </children>
                 </Pane>
                 <Pane prefHeight="80.0" prefWidth="277.0" />
-                <Button fx:id="findRecipe" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Find Recipes" textFill="WHITE">
+                <Button fx:id="findRecipe" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#findRecipe" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Find Recipes" textFill="WHITE">
                     <padding>
                         <Insets left="40.0" />
                     </padding>
@@ -41,7 +41,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button fx:id="categoriesButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="252.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Categories" textFill="WHITE">
+                <Button fx:id="categoriesButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="252.0" mnemonicParsing="false" onAction="#categories" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Categories" textFill="WHITE">
                     <padding>
                         <Insets left="40.0" />
                     </padding>
@@ -56,7 +56,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="profileButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="340.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Profile" textFill="WHITE">
+                <Button fx:id="profileButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="340.0" mnemonicParsing="false" onAction="#profile" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Profile" textFill="WHITE">
                     <padding>
                         <Insets left="40.0" />
                     </padding>
@@ -105,7 +105,7 @@
                 <Pane prefHeight="36.0" prefWidth="277.0" />
             </children>
         </VBox>
-        <TextField fx:id="searchBar" layoutX="324.0" layoutY="33.0" prefHeight="50.0" prefWidth="827.0" promptText="Enter Ingredients" style="-fx-background-radius: 45; -fx-background-color: #F3F3F3;" AnchorPane.leftAnchor="324.0" AnchorPane.rightAnchor="49.0">
+        <TextField fx:id="searchBar" layoutX="329.0" layoutY="53.0" prefHeight="50.0" prefWidth="827.0" promptText="Enter Ingredients" style="-fx-background-radius: 45; -fx-background-color: #F3F3F3;" text="Enter Recipe ID to create Report" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="44.0">
             <padding>
                 <Insets left="30.0" />
             </padding>
@@ -113,22 +113,16 @@
                 <Font size="18.0" />
             </font>
         </TextField>
-        <Button fx:id="searchButton" layoutX="1026.0" layoutY="33.0" mnemonicParsing="false" onAction="#searchRecipe" prefHeight="50.0" prefWidth="123.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" textFill="WHITE">
+        <Button fx:id="CreatePDFButton" layoutX="1031.0" layoutY="53.0" mnemonicParsing="false" onAction="#CreatePDF" prefHeight="50.0" prefWidth="123.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="1072.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="1077.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../icons/icons8-search-64.png" />
             </image>
         </ImageView>
-        <TextField fx:id="wishList_ids" layoutX="324.0" layoutY="117.0" prefHeight="50.0" prefWidth="331.0" promptText="   Type Recipe Id to Add to Wishlist" style="-fx-background-color: #F3F3F3; -fx-background-radius: 45;" />
-        <Button fx:id="addToWishlist" layoutX="576.0" layoutY="117.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="78.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" text="Add" textFill="WHITE">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Button>
         <ScrollPane layoutX="325.0" layoutY="212.0" prefHeight="549.0" prefWidth="834.0">
             <content>
                 <TableView fx:id="recipes" prefHeight="550.0" prefWidth="818.0">

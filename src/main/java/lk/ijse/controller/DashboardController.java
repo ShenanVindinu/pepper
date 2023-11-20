@@ -107,4 +107,29 @@ public class DashboardController {
         recipes.setItems(data); // Set new data
     }
 
+    @FXML
+    void categories(ActionEvent event) throws IOException {
+        //change Scene to categories page
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/categories_page.fxml"));
+        Stage window = (Stage) searchBar.getScene().getWindow();
+        window.setScene(new Scene(rootNode, 1200,800));
+    }
+
+    @FXML
+    void profile(ActionEvent event) throws IOException {
+        //change Scene to profile page
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/profile_page.fxml"));
+        Stage window = (Stage) searchBar.getScene().getWindow();
+        window.setScene(new Scene(rootNode, 1200,800));
+    }
+
+    @FXML
+    void wishlist(ActionEvent event) throws IOException {
+        //change Scene to wishlist page
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/wish_list_page.fxml"));
+        Stage window = (Stage) searchBar.getScene().getWindow();
+        window.setScene(new Scene(rootNode, 1200,800));
+
+    }
+
 }

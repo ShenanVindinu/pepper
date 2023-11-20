@@ -24,7 +24,7 @@
                     </children>
                 </Pane>
                 <Pane prefHeight="80.0" prefWidth="277.0" />
-                <Button fx:id="findRecipe" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Find Recipes" textFill="WHITE">
+                <Button fx:id="findRecipe" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#recipe" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Find Recipes" textFill="WHITE">
                     <padding>
                         <Insets left="40.0" />
                     </padding>
@@ -38,7 +38,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button fx:id="categoriesButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="252.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Categories" textFill="WHITE">
+                <Button fx:id="categoriesButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="252.0" mnemonicParsing="false" onAction="#categories" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Categories" textFill="WHITE">
                     <padding>
                         <Insets left="40.0" />
                     </padding>
@@ -53,7 +53,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="profileButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="340.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Profile" textFill="WHITE">
+                <Button fx:id="profileButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="340.0" mnemonicParsing="false" onAction="#profile" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Profile" textFill="WHITE">
                     <padding>
                         <Insets left="40.0" />
                     </padding>
@@ -76,7 +76,7 @@
                         <Font name="KacstArt" size="22.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="wishlistButton" fitHeight="53.0" fitWidth="49.0" onDragDetected="#wishlist" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../icons/icons8-wishlist-58.png" />
                             </image>
@@ -110,7 +110,7 @@
                   <Image url="@../img/Sri%20lankan%20Food%20category%20img.jpeg" />
                </image>
             </ImageView>
-            <Button alignment="BOTTOM_CENTER" layoutX="16.0" layoutY="19.0" mnemonicParsing="false" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Sri Lankan Food">
+            <Button fx:id="sriLankanFoodButton" alignment="BOTTOM_CENTER" layoutX="16.0" layoutY="19.0" mnemonicParsing="false" onAction="#srilankanFoods" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Sri Lankan Food">
                <font>
                   <Font size="19.0" />
                </font>
@@ -125,7 +125,7 @@
                   <Image url="@../img/American%20food.jpg" />
                </image>
             </ImageView>
-            <Button alignment="BOTTOM_CENTER" layoutX="17.0" layoutY="19.0" mnemonicParsing="false" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Sri Lankan Food">
+            <Button fx:id="americanFoodsButton" alignment="BOTTOM_CENTER" layoutX="17.0" layoutY="19.0" mnemonicParsing="false" onAction="#americanFoods" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="American Foods">
                <font>
                   <Font size="19.0" />
                </font>
@@ -140,7 +140,7 @@
                   <Image url="@../img/indian%20foods.jpg" />
                </image>
             </ImageView>
-            <Button alignment="BOTTOM_CENTER" layoutX="17.0" layoutY="19.0" mnemonicParsing="false" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Indian Food">
+            <Button fx:id="indianFoodsButton" alignment="BOTTOM_CENTER" layoutX="17.0" layoutY="19.0" mnemonicParsing="false" onAction="#IndianFoods" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Indian Food">
                <font>
                   <Font size="19.0" />
                </font>
@@ -155,7 +155,7 @@
                   <Image url="@../img/Flatlay_MakMak_KimberlyMotos.0.jpg" />
                </image>
             </ImageView>
-            <Button alignment="BOTTOM_CENTER" layoutX="16.0" layoutY="19.0" mnemonicParsing="false" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Sri Lankan Food">
+            <Button fx:id="thaiFoodsButton" alignment="BOTTOM_CENTER" layoutX="16.0" layoutY="19.0" mnemonicParsing="false" onAction="#thaiFoods" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Thai Foods">
                <font>
                   <Font size="19.0" />
                </font>

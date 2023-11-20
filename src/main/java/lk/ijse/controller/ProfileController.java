@@ -6,17 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class wishlistController {
-
-    @FXML
-    private Button CreatePDFButton;
+public class ProfileController {
 
     @FXML
     private Button LogoutButton;
@@ -25,33 +21,25 @@ public class wishlistController {
     private Button WishlistButton;
 
     @FXML
+    private ImageView achievement01;
+
+    @FXML
+    private ImageView achievement02;
+
+    @FXML
     private Button categoriesButton;
 
     @FXML
     private Button findRecipe;
 
     @FXML
-    private TableColumn<?, ?> ingredients;
-
-    @FXML
     private Button profileButton;
 
     @FXML
-    private TableColumn<?, ?> recipe_id;
+    private ImageView profilePic;
 
     @FXML
-    private TableColumn<?, ?> recipe_name;
-
-    @FXML
-    private TableView<?> recipes;
-
-    @FXML
-    private TextField searchBar;
-
-    @FXML
-    void CreatePDF(ActionEvent event) {
-
-    }
+    private Label userName;
 
     @FXML
     void categories(ActionEvent event) throws IOException {
@@ -62,7 +50,7 @@ public class wishlistController {
     }
 
     @FXML
-    void findRecipe(ActionEvent event) throws IOException {
+    void findRecipes(ActionEvent event) throws IOException {
         //change Scene to dashboard
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard_page.fxml"));
         Stage window = (Stage) LogoutButton.getScene().getWindow();
@@ -78,10 +66,10 @@ public class wishlistController {
     }
 
     @FXML
-    void profile(ActionEvent event) throws IOException {
-        //change Scene to profile page
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/profile_page.fxml"));
-        Stage window = (Stage) profileButton.getScene().getWindow();
+    void wishlist(ActionEvent event) throws IOException {
+        //change Scene to wishlist page
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/wish_list_page.fxml"));
+        Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
     }
 
