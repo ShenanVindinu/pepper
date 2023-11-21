@@ -38,21 +38,34 @@ public class UserModel {
     }
 
     public static String getUserIdByHash(String sha1Hash) throws SQLException {
-
-        Connection connection = DbConnection.getInstance().getConnection();
-        String sql = "SELECT user_id FROM user WHERE sha1_hash = ?";
-
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, sha1Hash);
-
-        ResultSet resultSet = pstm.executeQuery();
-
+        Connection connection = null;
+        PreparedStatement pstm = null;
+        ResultSet resultSet = null;
         String userId = null;
-        if (resultSet.next()) {
-            userId = resultSet.getString(1);
+
+        try {
+            connection = DbConnection.getInstance().getConnection();
+            String sql = "SELECT user_id FROM user WHERE sha1_hash = ?";
+            pstm = connection.prepareStatement(sql);
+            pstm.setString(1, sha1Hash);
+
+            resultSet = pstm.executeQuery();
+
+            if (resultSet.next()) {
+                userId = resultSet.getString(1);
+            }
+        } finally {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (pstm != null) {
+                pstm.close();
+            }
         }
+
         return userId;
     }
+
 
 
 
