@@ -42,7 +42,7 @@
                   <Font size="17.0" />
                </font>
             </PasswordField>
-            <Button fx:id="loginButton" layoutX="78.0" layoutY="530.0" mnemonicParsing="false" onAction="#login" prefHeight="61.0" prefWidth="289.0" style="-fx-background-radius: 17; -fx-background-color: #65386D;" stylesheets="@../css/fullpackstyling.css" text="Login" textFill="#e0e0e0">
+            <Button fx:id="loginButton" layoutX="78.0" layoutY="530.0" mnemonicParsing="false" onAction="#login" prefHeight="61.0" prefWidth="289.0" style="-fx-background-radius: 17; -fx-background-color: #65386D;" text="Login" textFill="#e0e0e0">
                <font>
                   <Font name="Contrail One" size="25.0" />
                </font>
