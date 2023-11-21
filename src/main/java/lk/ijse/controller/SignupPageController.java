@@ -66,7 +66,7 @@ public class SignupPageController {
 
         //generating hashcode
         String sha1Hex = DigestUtils.sha1Hex(combinedString);
-        System.out.println("SHA-1 hash of '" + combinedString + "': " + sha1Hex);
+        //System.out.println("SHA-1 hash of '" + combinedString + "': " + sha1Hex);
 
         // Create a UserDto object by passing username and password
         UserDto userDto = new UserDto(userId, userName, sha1Hex);

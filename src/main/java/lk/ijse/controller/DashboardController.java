@@ -63,7 +63,7 @@ public class DashboardController {
 
     @FXML
     void logout(ActionEvent event) throws IOException {
-        //change Scene to signin page
+        //change Scene to signing page
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_page.fxml"));
         Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
@@ -99,12 +99,6 @@ public class DashboardController {
             // Clear the table or display a message indicating no matching recipes
             recipes.getItems().clear();
         }
-    }
-
-
-    private void setTableData(ObservableList<RecipeDto> data) {
-        recipes.getItems().clear(); // Clear previous data
-        recipes.setItems(data); // Set new data
     }
 
     @FXML

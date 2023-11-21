@@ -11,7 +11,11 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import javafx.event.ActionEvent;
+import lk.ijse.model.UserModel;
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 public class LoginPageController {
@@ -25,7 +29,7 @@ public class LoginPageController {
     public LoginPageController() {}
 
     @FXML
-    public void login(ActionEvent event) throws IOException {
+    public void login(ActionEvent event) throws IOException, SQLException {
         String username = userName.getText();
         String password = passwordField.getText();
 
@@ -36,6 +40,7 @@ public class LoginPageController {
         if (isLoggedIn) {
             // Successful login
             System.out.println("Login successful!");
+            showAlert("Login Successful", "Welcome! "+username);
 
             //change Scene to dashboard
             Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard_page.fxml"));
@@ -45,12 +50,27 @@ public class LoginPageController {
         } else {
             // Failed login
             System.out.println("Login failed. Please check your credentials.");
+            showAlert("Login Successful", "Password doesn't match or you are not Registered.\nPlease try again!");
         }
     }
 
 
-    private boolean performLogin(String username, String password) {
-        return username.equals("Shenan") && password.equals("1234");
+    private boolean performLogin(String username, String password) throws SQLException {
+
+        String combinedString = username+password;
+
+        //generating hashcode
+        String sha1Hex = DigestUtils.sha1Hex(combinedString);
+        //System.out.println("SHA-1 hash of '" + combinedString + "': " + sha1Hex);
+
+        String userIdByHash = null;
+
+        userIdByHash = UserModel.getUserIdByHash(sha1Hex);
+
+        if ( userIdByHash != null ) { return true; }
+
+        else { return false; }
+
     }
 
     @FXML
@@ -59,5 +79,13 @@ public class LoginPageController {
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/signup_page.fxml"));
         Stage window = (Stage) userName.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

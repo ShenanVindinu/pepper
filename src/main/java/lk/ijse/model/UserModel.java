@@ -5,6 +5,7 @@ import lk.ijse.dto.UserDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserModel {
@@ -35,6 +36,26 @@ public class UserModel {
 
         return false;
     }
+
+    public static String getUserIdByHash(String sha1Hash) throws SQLException {
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT user_id FROM user WHERE sha1_hash = ?";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, sha1Hash);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        String userId = null;
+        if (resultSet.next()) {
+            userId = resultSet.getString(1);
+        }
+        return userId;
+    }
+
+
+
 
 }
 
