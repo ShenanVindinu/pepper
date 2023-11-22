@@ -8,15 +8,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lk.ijse.db.DbConnection;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.SQLException;
 
-public class wishlistController {
-
-    @FXML
-    private Button CreatePDFButton;
+public class WishlistController {
 
     @FXML
     private Button LogoutButton;
@@ -34,6 +37,9 @@ public class wishlistController {
     private TableColumn<?, ?> ingredients;
 
     @FXML
+    private Button printButton;
+
+    @FXML
     private Button profileButton;
 
     @FXML
@@ -46,12 +52,32 @@ public class wishlistController {
     private TableView<?> recipes;
 
     @FXML
-    private TextField searchBar;
+    private Button clearWishlistButton;
+
+
 
     @FXML
-    void CreatePDF(ActionEvent event) {
+    void printReport(ActionEvent event) throws JRException, SQLException {
+        InputStream resourceAsStream = getClass().getResourceAsStream("/reports/wishlist_items.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport, //compiled report
+                        null,
+                        DbConnection.getInstance().getConnection()//database connection
+                );
+
+        JasperViewer.viewReport(jasperPrint, false);
+    }
+
+    @FXML
+    void clearWishlist(ActionEvent event) {
 
     }
+
+
 
     @FXML
     void categories(ActionEvent event) throws IOException {

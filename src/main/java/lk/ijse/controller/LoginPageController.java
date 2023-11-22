@@ -1,7 +1,6 @@
 package lk.ijse.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -9,7 +8,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import javafx.event.ActionEvent;
 import lk.ijse.model.UserModel;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -40,7 +38,7 @@ public class LoginPageController {
         if (isLoggedIn) {
             // Successful login
             System.out.println("Login successful!");
-            showAlert("Login Successful", "Welcome! "+username);
+            showAlert("Welcome! "+username);
 
             //change Scene to dashboard
             Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard_page.fxml"));
@@ -50,7 +48,7 @@ public class LoginPageController {
         } else {
             // Failed login
             System.out.println("Login failed. Please check your credentials.");
-            showAlert("Login Successful", "Password doesn't match or you are not Registered.\nPlease try again!");
+            showAlert("Password doesn't match or you are not Registered.\nPlease try again!");
         }
     }
 
@@ -64,12 +62,12 @@ public class LoginPageController {
         //System.out.println("SHA-1 hash of '" + combinedString + "': " + sha1Hex);
 
         String userIdByHash = null;
-
         userIdByHash = UserModel.getUserIdByHash(sha1Hex);
 
-        if ( userIdByHash != null ) { return true; }
+        //passing userId to other Controllers, so they know which user they are working with...
+        passUserId(userIdByHash);
 
-        else { return false; }
+        return userIdByHash != null;
 
     }
 
@@ -81,11 +79,15 @@ public class LoginPageController {
         window.setScene(new Scene(rootNode, 1200,800));
     }
 
-    private void showAlert(String title, String content) {
+    private void showAlert(String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
+        alert.setTitle("Login Successful");
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    public static String passUserId(String userId) {
+        return userId;
     }
 }

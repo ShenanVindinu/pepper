@@ -2,10 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.wishlistController">
+<AnchorPane prefHeight="800.0" prefWidth="1200" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.WishlistController">
     <children>
         <VBox prefHeight="800.0" prefWidth="277.0" style="-fx-background-color: #AF2655;">
             <children>
@@ -105,27 +105,9 @@
                 <Pane prefHeight="36.0" prefWidth="277.0" />
             </children>
         </VBox>
-        <TextField fx:id="searchBar" layoutX="329.0" layoutY="53.0" prefHeight="50.0" prefWidth="827.0" promptText="Enter Ingredients" style="-fx-background-radius: 45; -fx-background-color: #F3F3F3;" text="Enter Recipe ID to create Report" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="44.0">
-            <padding>
-                <Insets left="30.0" />
-            </padding>
-            <font>
-                <Font size="18.0" />
-            </font>
-        </TextField>
-        <Button fx:id="CreatePDFButton" layoutX="1031.0" layoutY="53.0" mnemonicParsing="false" onAction="#CreatePDF" prefHeight="50.0" prefWidth="123.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" textFill="WHITE">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Button>
-        <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="1077.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../icons/icons8-search-64.png" />
-            </image>
-        </ImageView>
-        <ScrollPane layoutX="325.0" layoutY="212.0" prefHeight="549.0" prefWidth="834.0">
+        <ScrollPane layoutX="325.0" layoutY="212.0" prefHeight="490.0" prefWidth="834.0">
             <content>
-                <TableView fx:id="recipes" prefHeight="550.0" prefWidth="818.0">
+                <TableView fx:id="recipes" prefHeight="489.0" prefWidth="818.0">
                     <columns>
                         <TableColumn fx:id="recipe_id" prefWidth="116.0" text="recipe_id" />
                         <TableColumn fx:id="recipe_name" minWidth="0.0" prefWidth="252.0" text="recipe_name" />
@@ -134,5 +116,30 @@
                 </TableView>
             </content>
         </ScrollPane>
+      <Button fx:id="printButton" alignment="BOTTOM_CENTER" layoutX="1016.0" layoutY="34.0" mnemonicParsing="false" onAction="#printReport" prefHeight="141.0" prefWidth="143.0" style="-fx-background-color: #AF2655; -fx-background-radius: 35;" stylesheets="@../css/fullpackstyling.css" text="print" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Button>
+      <ImageView disable="true" fitHeight="69.0" fitWidth="69.0" layoutX="1053.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-print-100%20(copy).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="321.0" layoutY="59.0" prefHeight="107.0" prefWidth="659.0" text="Wish list">
+         <font>
+            <Font name="Chilanka Regular" size="74.0" />
+         </font>
+      </Label>
+      <Label layoutX="325.0" layoutY="160.0" prefHeight="21.0" prefWidth="427.0" text="Click print to print every recipe in the wishlist">
+         <font>
+            <Font name="Chilanka Regular" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="clearWishlistButton" layoutX="953.0" layoutY="728.0" mnemonicParsing="false" onAction="#clearWishlist" prefHeight="45.0" prefWidth="201.0" style="-fx-background-color: #AF2655; -fx-background-radius: 20;" text="Clear Wishllist" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="21.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
