@@ -9,6 +9,8 @@ public class UserDto {
     private String user_name;
     private String sha1_hash;
     private String profilePictureId;
+    private String currentUserId;
+
 
     public UserDto() {}
 
@@ -52,6 +54,10 @@ public class UserDto {
     public void setProfilePictureId(String profilePictureId) {
         this.profilePictureId = profilePictureId;
     }
+
+    public String getCurrentUserId() { return currentUserId; }
+
+    public void setCurrentUserId(String currentUserId) { this.currentUserId = currentUserId; }
 
 
 

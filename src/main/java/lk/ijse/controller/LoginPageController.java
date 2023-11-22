@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
+import lk.ijse.dto.UserDto;
 import lk.ijse.model.UserModel;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -42,7 +43,7 @@ public class LoginPageController {
 
             //change Scene to dashboard
             Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard_page.fxml"));
-            Stage window = (Stage) userName.getScene().getWindow();
+            Stage window = (Stage) passwordField.getScene().getWindow();
             window.setScene(new Scene(rootNode, 1200,800));
 
         } else {

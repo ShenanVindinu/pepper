@@ -109,9 +109,9 @@
             <content>
                 <TableView fx:id="recipes" prefHeight="489.0" prefWidth="818.0">
                     <columns>
-                        <TableColumn fx:id="recipe_id" prefWidth="116.0" text="recipe_id" />
-                        <TableColumn fx:id="recipe_name" minWidth="0.0" prefWidth="252.0" text="recipe_name" />
-                        <TableColumn fx:id="ingredients" minWidth="0.0" prefWidth="447.0" text="ingredients" />
+                        <TableColumn fx:id="recipe_ids" prefWidth="116.0" text="recipe_id" />
+                        <TableColumn fx:id="recipe_names" minWidth="0.0" prefWidth="252.0" text="recipe_name" />
+                        <TableColumn fx:id="ingredient" minWidth="0.0" prefWidth="447.0" text="ingredients" />
                     </columns>
                 </TableView>
             </content>

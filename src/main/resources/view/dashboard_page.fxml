@@ -124,7 +124,7 @@
          </image>
       </ImageView>
       <TextField fx:id="wishList_ids" layoutX="324.0" layoutY="117.0" prefHeight="50.0" prefWidth="331.0" promptText="   Type Recipe Id to Add to Wishlist" style="-fx-background-color: #F3F3F3; -fx-background-radius: 45;" />
-      <Button fx:id="addToWishlist" layoutX="576.0" layoutY="117.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="78.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" text="Add" textFill="WHITE">
+      <Button fx:id="addToWishlist" layoutX="576.0" layoutY="117.0" mnemonicParsing="false" onAction="#addToWishlistTable" prefHeight="50.0" prefWidth="78.0" style="-fx-background-color: #AF2655; -fx-background-radius: 45;" text="Add" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

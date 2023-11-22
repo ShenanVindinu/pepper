@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lk.ijse.dto.RecipeDto;
+import lk.ijse.dto.UserDto;
 import lk.ijse.model.RecipeModel;
 
 import java.io.IOException;
@@ -61,13 +62,7 @@ public class DashboardController {
     @FXML
     private TextField wishList_ids;
 
-    @FXML
-    void logout(ActionEvent event) throws IOException {
-        //change Scene to signing page
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_page.fxml"));
-        Stage window = (Stage) LogoutButton.getScene().getWindow();
-        window.setScene(new Scene(rootNode, 1200,800));
-    }
+
 
     @FXML
     void searchRecipe(ActionEvent event) throws SQLException {
@@ -77,7 +72,7 @@ public class DashboardController {
         List<RecipeDto> filteredRecipes = RecipeModel.findRecipesByIngredients(enteredIngredients);
 
         // Clear existing data in columns
-        recipe_id.setCellValueFactory(new PropertyValueFactory<>("")); // Replace with your actual property names
+        recipe_id.setCellValueFactory(new PropertyValueFactory<>(""));
         recipe_name.setCellValueFactory(new PropertyValueFactory<>(""));
         ingredients.setCellValueFactory(new PropertyValueFactory<>(""));
 
@@ -101,6 +96,32 @@ public class DashboardController {
         }
     }
 
+    //
+    @FXML
+    void addToWishlistTable(ActionEvent event) throws SQLException {
+        String enteredRecipeId = wishList_ids.getText();
+
+        //get Current userId
+        UserDto userDto = new UserDto();
+        String userId = userDto.getUser_id();
+
+        // Fetch recipes from the database based on entered Id
+        List<RecipeDto> filteredRecipes = RecipeModel.findRecipeByIds(enteredRecipeId);
+
+        // Instantiate the controller
+        WishlistController wishlistController = new WishlistController();
+        // Instantiate the model
+        RecipeModel recipeModel = new RecipeModel();
+
+        // Populate table in wishList page with given data using the instance
+        wishlistController.populateTable(filteredRecipes);
+
+
+        // Add RecipeId and UserId to Wishlist Table using the instance
+        recipeModel.addIdsToWishlist(enteredRecipeId,userId);
+    }
+
+
     @FXML
     void categories(ActionEvent event) throws IOException {
         //change Scene to categories page
@@ -123,7 +144,14 @@ public class DashboardController {
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/wish_list_page.fxml"));
         Stage window = (Stage) searchBar.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
+    }
 
+    @FXML
+    void logout(ActionEvent event) throws IOException {
+        //change Scene to signing page
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_page.fxml"));
+        Stage window = (Stage) LogoutButton.getScene().getWindow();
+        window.setScene(new Scene(rootNode, 1200,800));
     }
 
 }

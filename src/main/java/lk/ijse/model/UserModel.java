@@ -43,6 +43,8 @@ public class UserModel {
         ResultSet resultSet = null;
         String userId = null;
 
+
+
         try {
             connection = DbConnection.getInstance().getConnection();
             String sql = "SELECT user_id FROM user WHERE sha1_hash = ?";
@@ -62,7 +64,8 @@ public class UserModel {
                 pstm.close();
             }
         }
-
+        UserDto userDto = new UserDto();
+        userDto.setUser_id(userId);
         return userId;
     }
 
