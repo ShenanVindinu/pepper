@@ -58,13 +58,13 @@ public class ProfileController {
 
         String ingredient = allergicTextField.getText();
 
-        // Call method in ProfileModel to add the ingredient to the exclusion list
+        // Calling method in ProfileModel to add the ingredient to the exclusion list
         profileModel.addToExclusionsAndRemoveRecipes(ingredient);
 
         // Fetch updated allergy table data
         ObservableList<String> allergyIngredients = FXCollections.observableArrayList(profileModel.getAllergyIngredients());
 
-        // Set the retrieved data to the table
+        // Setting the retrieved data to the table
         ingredientTable.setItems(allergyIngredients);
         ingredientColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
 

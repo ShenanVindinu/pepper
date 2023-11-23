@@ -54,16 +54,17 @@ public class WishlistController {
     private TextField addToWishlistTextField;
 
     @FXML
-    private TableColumn<?, ?> recipeIdColumn;
+    private TableColumn<RecipeDto, String> recipeIdColumn;
 
     @FXML
-    private TableColumn<?, ?> recipeNameColumn;
+    private TableColumn<RecipeDto, String> recipeNameColumn;
 
     @FXML
-    private TableColumn<?, ?> ingredientColumn;
+    private TableColumn<RecipeDto, String> ingredientColumn;
 
     @FXML
-    private TableView<?> recipeTable;
+    private TableView<RecipeDto> recipeTable;
+
 
 
 
@@ -88,8 +89,30 @@ public class WishlistController {
 
     @FXML
     void addToWishlist(ActionEvent event) {
+        String recipeIdToAdd = addToWishlistTextField.getText();
+        if (!recipeIdToAdd.isEmpty()) {
+            try {
+                WishListModel wishListModel = new WishListModel();
+                RecipeDto addedRecipe = wishListModel.addRecipeToWishlist(recipeIdToAdd);
 
+                if (addedRecipe != null) {
+                    // If the recipe was added to the wishlist, update the table
+                    ObservableList<RecipeDto> currentItems = recipeTable.getItems();
+                    currentItems.add(addedRecipe);
+                    recipeTable.setItems(currentItems);
+                    showAlert("Recipe added to Wishlist!");
+                } else {
+                    showAlert("Recipe not found or could not be added to Wishlist.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                showAlert("Error occurred while adding recipe to Wishlist.");
+            }
+        } else {
+            showAlert("Please enter a Recipe ID to add to Wishlist.");
+        }
     }
+
 
 
 
@@ -104,7 +127,7 @@ public class WishlistController {
 
     @FXML
     void findRecipe(ActionEvent event) throws IOException {
-        //change Scene to dashboard
+        //change Scene to dashboar
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard_page.fxml"));
         Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
