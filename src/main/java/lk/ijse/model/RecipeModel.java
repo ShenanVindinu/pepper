@@ -101,4 +101,198 @@ public class RecipeModel {
             }
         }
     }
+
+    public List<RecipeDto> getSriLankanFoods() throws SQLException {
+        List<RecipeDto> sriLankanFoods = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DbConnection.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement(
+                    "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
+                            "FROM recipe " +
+                            "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
+                            "WHERE category.category_name = ?"
+            );
+
+            preparedStatement.setString(1, "Sri Lankan");
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String recipeId = resultSet.getString("recipe_id");
+                String recipeName = resultSet.getString("recipe_name");
+                String ingredientName = resultSet.getString("ingredient_name");
+
+                RecipeDto recipe = new RecipeDto(recipeId, recipeName, ingredientName);
+                sriLankanFoods.add(recipe);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions or log them
+        } finally {
+            // Close resources in the reverse order of their creation to avoid potential issues
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sriLankanFoods;
+    }
+
+    public List<RecipeDto> getThaiFoods() throws SQLException {
+        List<RecipeDto> thaiFoods = new ArrayList<>();
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
+                            "FROM recipe " +
+                            "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
+                            "WHERE category.category_name = ?");
+
+
+            preparedStatement.setString(1, "Thai"); // Adjust to the appropriate category name
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String recipeId = resultSet.getString("recipe_id");
+                    String recipeName = resultSet.getString("recipe_name");
+                    String ingredientName = resultSet.getString("ingredient_name");
+
+                    RecipeDto recipe = new RecipeDto(recipeId, recipeName, ingredientName);
+                    thaiFoods.add(recipe);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle closing connection exception
+            }
+        }
+
+        return thaiFoods;
+    }
+
+    public List<RecipeDto> getAmericanFoods() throws SQLException {
+        List<RecipeDto> americanFoods = new ArrayList<>();
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
+                            "FROM recipe " +
+                            "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
+                            "WHERE category.category_name = ?"
+            );
+
+            preparedStatement.setString(1, "American");
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String recipeId = resultSet.getString("recipe_id");
+                    String recipeName = resultSet.getString("recipe_name");
+                    String ingredientName = resultSet.getString("ingredient_name");
+
+                    RecipeDto recipe = new RecipeDto(recipeId, recipeName, ingredientName);
+                    americanFoods.add(recipe);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle closing connection exception
+            }
+        }
+
+        return americanFoods;
+    }
+
+
+    public List<RecipeDto> getIndianFoods() throws SQLException {
+        List<RecipeDto> indianFoods = new ArrayList<>();
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
+                            "FROM recipe " +
+                            "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
+                            "WHERE category.category_name = ?"
+            );
+
+            preparedStatement.setString(1, "Indian");
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String recipeId = resultSet.getString("recipe_id");
+                    String recipeName = resultSet.getString("recipe_name");
+                    String ingredientName = resultSet.getString("ingredient_name");
+
+                    RecipeDto recipe = new RecipeDto(recipeId, recipeName, ingredientName);
+                    indianFoods.add(recipe);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle closing connection exception
+            }
+        }
+
+        return indianFoods;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

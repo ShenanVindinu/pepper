@@ -1,5 +1,7 @@
 package lk.ijse.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,11 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import lk.ijse.dto.RecipeDto;
 import lk.ijse.model.CategoryModel;
+import lk.ijse.model.RecipeModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -48,59 +52,115 @@ public class CategoriesController {
     private ImageView wishlistButton;
 
     @FXML
-    private TableView<?> recipeTable;
+    private TableView<RecipeDto> recipeTable;
 
     @FXML
-    private TableColumn<?, ?> recipeIdColumn;
+    private TableColumn<RecipeDto, String> recipeIdColumn;
 
     @FXML
-    private TableColumn<?, ?> recipeNameColumn;
+    private TableColumn<RecipeDto, String> recipeNameColumn;
 
     @FXML
-    private TableColumn<?, ?> ingredientColumn;
+    private TableColumn<RecipeDto, String> ingredientColumn;
+
 
 
 
 
     @FXML
     void IndianFoods(ActionEvent event) {
+        RecipeModel recipeModel = new RecipeModel();
+        clearTable();
 
+        try {
+            List<RecipeDto> indianFoods = recipeModel.getIndianFoods();
+
+            ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(indianFoods);
+
+            // Assuming recipeTable is the TableView and columns are recipeIdColumn, recipeNameColumn, and ingredientColumn
+            recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_id"));
+            recipeNameColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_name"));
+            ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient_name"));
+
+            recipeTable.setItems(observableList);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQLException
+        }
     }
+
 
     @FXML
-    void americanFoods(ActionEvent event) {
+    void americanFoods(ActionEvent event) throws SQLException {
+        RecipeModel recipeModel = new RecipeModel();
+        clearTable();
 
+        try {
+            List<RecipeDto> americanFoods = recipeModel.getAmericanFoods();
+
+            ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(americanFoods);
+
+            // Assuming recipeTable is the TableView and columns are recipeIdColumn, recipeNameColumn, and ingredientColumn
+            recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_id"));
+            recipeNameColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_name"));
+            ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient_name"));
+
+            recipeTable.setItems(observableList);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQLException
+        }
     }
+
 
     @FXML
     void srilankanFoods(ActionEvent event) throws SQLException, IOException {
-        // Get Sri Lankan foods data from CategoryModel
-        List<RecipeDto> sriLankanFoodsData = CategoryModel.getSriLankanFoods();
 
-        // Create CategoryRecipesController instance
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("path_to_CategoryRecipes.fxml"));
-        Parent root = loader.load();
-        CategoryRecipesController categoryRecipesController = loader.getController();
+        RecipeModel recipeModel = new RecipeModel();
+        clearTable();
 
-        // Populate the table in CategoryRecipesController
-        TableView<RecipeDto> recipesTableView = categoryRecipesController.getRecipesTableView();
-        populateTable(recipesTableView, sriLankanFoodsData);
+        try {
+            List<RecipeDto> sriLankanFoods = recipeModel.getSriLankanFoods();
+
+            ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(sriLankanFoods);
+
+            // Assuming recipeTable is the TableView and columns are recipeIdColumn, recipeNameColumn, and ingredientColumn
+            recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_id"));
+            recipeNameColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_name"));
+            ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient_name"));
 
 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+            recipeTable.setItems(observableList);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQLException
+        }
     }
+
 
     @FXML
     void thaiFoods(ActionEvent event) {
+        RecipeModel recipeModel = new RecipeModel();
 
+        try {
+            List<RecipeDto> thaiFoodsList = recipeModel.getThaiFoods();
+            clearTable();
+
+            ObservableList<RecipeDto> data = FXCollections.observableArrayList(thaiFoodsList);
+
+            recipeTable.setItems(data);
+            recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_id"));
+            recipeNameColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_name"));
+            ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient_name"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQL exception
+        }
     }
 
-
-    private void populateTable(TableView<RecipeDto> recipesTableView, List<RecipeDto> sriLankanFoodsData) {
-
-    }
 
 
 
@@ -126,6 +186,14 @@ public class CategoriesController {
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/wish_list_page.fxml"));
         Stage window = (Stage) wishlistButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
+    }
+
+    // Method to clear the table
+    private void clearTable() {
+        recipeTable.getItems().clear();
+        recipeIdColumn.getColumns().clear();
+        recipeNameColumn.getColumns().clear();
+        ingredientColumn.getColumns().clear();
     }
 
     @FXML
