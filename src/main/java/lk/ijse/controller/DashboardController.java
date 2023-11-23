@@ -39,9 +39,6 @@ public class DashboardController {
     private Button findRecipe;
 
     @FXML
-    private TableColumn<RecipeDto, String> ingredients;
-
-    @FXML
     private Button profileButton;
 
     @FXML
@@ -49,6 +46,9 @@ public class DashboardController {
 
     @FXML
     private TableColumn<RecipeDto, String> recipe_name;
+
+    @FXML
+    private TableColumn<RecipeDto, String> ingredients;
 
     @FXML
     private TableView<RecipeDto> recipes;
@@ -59,8 +59,6 @@ public class DashboardController {
     @FXML
     private Button searchButton;
 
-    @FXML
-    private TextField wishList_ids;
 
 
 
@@ -97,29 +95,29 @@ public class DashboardController {
     }
 
     //
-    @FXML
-    void addToWishlistTable(ActionEvent event) throws SQLException {
-        String enteredRecipeId = wishList_ids.getText();
-
-        //get Current userId
-        UserDto userDto = new UserDto();
-        String userId = userDto.getUser_id();
-
-        // Fetch recipes from the database based on entered Id
-        List<RecipeDto> filteredRecipes = RecipeModel.findRecipeByIds(enteredRecipeId);
-
-        // Instantiate the controller
-        WishlistController wishlistController = new WishlistController();
-        // Instantiate the model
-        RecipeModel recipeModel = new RecipeModel();
-
-        // Populate table in wishList page with given data using the instance
-        wishlistController.populateTable(filteredRecipes);
-
-
-        // Add RecipeId and UserId to Wishlist Table using the instance
-        recipeModel.addIdsToWishlist(enteredRecipeId,userId);
-    }
+//    @FXML
+//    void addToWishlistTable(ActionEvent event) throws SQLException {
+//        String enteredRecipeId = wishList_ids.getText();
+//
+//        //get Current userId
+//        UserDto userDto = new UserDto();
+//        String userId = userDto.getUser_id();
+//
+//        // Fetch recipes from the database based on entered Id
+//        List<RecipeDto> filteredRecipes = RecipeModel.findRecipeByIds(enteredRecipeId);
+//
+//        // Instantiate the controller
+//        WishlistController wishlistController = new WishlistController();
+//        // Instantiate the model
+//        RecipeModel recipeModel = new RecipeModel();
+//
+//        // Populate table in wishList page with given data using the instance
+//        wishlistController.populateTable(filteredRecipes);
+//
+//
+//        // Add RecipeId and UserId to Wishlist Table using the instance
+//        recipeModel.addIdsToWishlist(enteredRecipeId,userId);
+//    }
 
 
     @FXML

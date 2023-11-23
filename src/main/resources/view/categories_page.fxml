@@ -2,6 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -38,7 +41,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button fx:id="categoriesButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="252.0" mnemonicParsing="false" onAction="#categories" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Categories" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="252.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="368.0" stylesheets="@../css/fullpackstyling.css" text="  Categories" textFill="WHITE">
                     <padding>
                         <Insets left="40.0" />
                     </padding>
@@ -102,65 +105,76 @@
                 <Pane prefHeight="36.0" prefWidth="277.0" />
             </children>
         </VBox>
-      <AnchorPane layoutX="371.0" layoutY="76.0">
+      <AnchorPane layoutX="354.0" layoutY="63.0">
          <children>
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e8e5e5" height="286.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" width="269.0" />
-            <ImageView fitHeight="184.0" fitWidth="230.0" layoutX="19.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e8e5e5" height="177.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" width="188.0" />
+            <ImageView fitHeight="120.0" fitWidth="140.0" layoutX="24.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/Sri%20lankan%20Food%20category%20img.jpeg" />
                </image>
             </ImageView>
-            <Button fx:id="sriLankanFoodButton" alignment="BOTTOM_CENTER" layoutX="16.0" layoutY="19.0" mnemonicParsing="false" onAction="#srilankanFoods" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Sri Lankan Food">
+            <Button fx:id="sriLankanFoodButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#srilankanFoods" prefHeight="170.0" prefWidth="188.0" style="-fx-background-color: transparent;" text="Sri Lankan Food">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="796.0" layoutY="464.0">
+      <AnchorPane layoutX="553.0" layoutY="63.0" prefHeight="171.0" prefWidth="176.0">
          <children>
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e8e5e5" height="286.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" width="269.0" />
-            <ImageView fitHeight="196.0" fitWidth="236.0" layoutX="19.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e8e5e5" height="177.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" width="188.0" />
+            <Button fx:id="americanFoodsButton" alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#americanFoods" prefHeight="151.0" prefWidth="172.0" style="-fx-background-color: transparent;" text="American Foods">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="104.0" fitWidth="154.0" layoutX="17.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/American%20food.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="americanFoodsButton" alignment="BOTTOM_CENTER" layoutX="17.0" layoutY="19.0" mnemonicParsing="false" onAction="#americanFoods" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="American Foods">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="796.0" layoutY="76.0">
+      <AnchorPane layoutX="752.0" layoutY="61.0">
          <children>
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e8e5e5" height="286.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" width="269.0" />
-            <ImageView fitHeight="178.0" fitWidth="236.0" layoutX="19.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e8e5e5" height="177.0" layoutY="2.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" width="172.0" />
+            <ImageView fitHeight="112.0" fitWidth="148.0" layoutX="12.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/indian%20foods.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="indianFoodsButton" alignment="BOTTOM_CENTER" layoutX="17.0" layoutY="19.0" mnemonicParsing="false" onAction="#IndianFoods" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Indian Food">
+            <Button fx:id="indianFoodsButton" alignment="BOTTOM_CENTER" layoutX="6.0" mnemonicParsing="false" onAction="#IndianFoods" prefHeight="177.0" prefWidth="162.0" style="-fx-background-color: transparent;" text="Indian Food">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="371.0" layoutY="464.0">
+      <AnchorPane layoutX="934.0" layoutY="63.0">
          <children>
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e8e5e5" height="286.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" width="269.0" />
-            <ImageView fitHeight="184.0" fitWidth="236.0" layoutX="19.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e8e5e5" height="179.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" width="172.0" />
+            <ImageView fitHeight="112.0" fitWidth="172.0" layoutX="11.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/Flatlay_MakMak_KimberlyMotos.0.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="thaiFoodsButton" alignment="BOTTOM_CENTER" layoutX="16.0" layoutY="19.0" mnemonicParsing="false" onAction="#thaiFoods" prefHeight="248.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Thai Foods">
+            <Button fx:id="thaiFoodsButton" alignment="BOTTOM_CENTER" layoutX="5.0" layoutY="7.0" mnemonicParsing="false" onAction="#thaiFoods" prefHeight="170.0" prefWidth="162.0" style="-fx-background-color: transparent;" text="Thai Foods">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
+      <ScrollPane layoutX="354.0" layoutY="267.0" prefHeight="480.0" prefWidth="753.0">
+         <content>
+            <TableView fx:id="recipeTable" prefHeight="482.0" prefWidth="752.0">
+              <columns>
+                <TableColumn fx:id="recipeIdColumn" prefWidth="134.0" text="Recipe_id" />
+                <TableColumn fx:id="recipeNameColumn" prefWidth="279.0" text="Recipe_name" />
+                  <TableColumn fx:id="ingredientColumn" prefWidth="337.0" text="Ingredients" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
     </children>
 </AnchorPane>

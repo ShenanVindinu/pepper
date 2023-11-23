@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,9 +30,6 @@ public class CategoriesController {
     private Button americanFoodsButton;
 
     @FXML
-    private Button categoriesButton;
-
-    @FXML
     private Button findRecipe;
 
     @FXML
@@ -50,6 +48,21 @@ public class CategoriesController {
     private ImageView wishlistButton;
 
     @FXML
+    private TableView<?> recipeTable;
+
+    @FXML
+    private TableColumn<?, ?> recipeIdColumn;
+
+    @FXML
+    private TableColumn<?, ?> recipeNameColumn;
+
+    @FXML
+    private TableColumn<?, ?> ingredientColumn;
+
+
+
+
+    @FXML
     void IndianFoods(ActionEvent event) {
 
     }
@@ -58,8 +71,6 @@ public class CategoriesController {
     void americanFoods(ActionEvent event) {
 
     }
-
-
 
     @FXML
     void srilankanFoods(ActionEvent event) throws SQLException, IOException {
@@ -81,27 +92,17 @@ public class CategoriesController {
         stage.show();
     }
 
-    private void populateTable(TableView<RecipeDto> recipesTableView, List<RecipeDto> sriLankanFoodsData) {
-
-    }
-
     @FXML
     void thaiFoods(ActionEvent event) {
 
     }
 
-    @FXML
-    void categories(ActionEvent event) {
+
+    private void populateTable(TableView<RecipeDto> recipesTableView, List<RecipeDto> sriLankanFoodsData) {
 
     }
 
-    @FXML
-    void logout(ActionEvent event) throws IOException {
-        //change Scene to signin page
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_page.fxml"));
-        Stage window = (Stage) LogoutButton.getScene().getWindow();
-        window.setScene(new Scene(rootNode, 1200,800));
-    }
+
 
     @FXML
     void profile(ActionEvent event) throws IOException {
@@ -124,6 +125,14 @@ public class CategoriesController {
         //change Scene to wishlist page
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/wish_list_page.fxml"));
         Stage window = (Stage) wishlistButton.getScene().getWindow();
+        window.setScene(new Scene(rootNode, 1200,800));
+    }
+
+    @FXML
+    void logout(ActionEvent event) throws IOException {
+        //change Scene to signin page
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_page.fxml"));
+        Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
     }
 

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -106,15 +107,15 @@
             </children>
         </VBox>
         <ScrollPane layoutX="325.0" layoutY="212.0" prefHeight="490.0" prefWidth="834.0">
-            <content>
-                <TableView fx:id="recipes" prefHeight="489.0" prefWidth="818.0">
-                    <columns>
-                        <TableColumn fx:id="recipe_ids" prefWidth="116.0" text="recipe_id" />
-                        <TableColumn fx:id="recipe_names" minWidth="0.0" prefWidth="252.0" text="recipe_name" />
-                        <TableColumn fx:id="ingredient" minWidth="0.0" prefWidth="447.0" text="ingredients" />
-                    </columns>
-                </TableView>
-            </content>
+         <content>
+            <TableView fx:id="recipeTable" prefHeight="490.0" prefWidth="833.0">
+              <columns>
+                <TableColumn fx:id="recipeIdColumn" prefWidth="123.0" text="Recipe_id" />
+                <TableColumn fx:id="recipeNameColumn" prefWidth="318.0" text="Recipe_name" />
+                  <TableColumn fx:id="ingredientColumn" prefWidth="391.0" text="Ingredients" />
+              </columns>
+            </TableView>
+         </content>
         </ScrollPane>
       <Button fx:id="printButton" alignment="BOTTOM_CENTER" layoutX="1016.0" layoutY="34.0" mnemonicParsing="false" onAction="#printReport" prefHeight="141.0" prefWidth="143.0" style="-fx-background-color: #AF2655; -fx-background-radius: 35;" stylesheets="@../css/fullpackstyling.css" text="print" textAlignment="CENTER" textFill="WHITE">
          <font>
@@ -137,6 +138,12 @@
          </font>
       </Label>
       <Button fx:id="clearWishlistButton" layoutX="953.0" layoutY="728.0" mnemonicParsing="false" onAction="#clearWishlist" prefHeight="45.0" prefWidth="201.0" style="-fx-background-color: #AF2655; -fx-background-radius: 20;" text="Clear Wishllist" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="21.0" />
+         </font>
+      </Button>
+      <TextField fx:id="addToWishlistTextField" layoutX="325.0" layoutY="728.0" prefHeight="45.0" prefWidth="303.0" promptText="    Type Recipe ID to Add" style="-fx-background-color: #eeeeee; -fx-background-radius: 15;" />
+      <Button fx:id="addToWishlistButton" layoutX="607.0" layoutY="728.0" mnemonicParsing="false" onAction="#addToWishlist" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: #AF2655; -fx-background-radius: 20;" text="ADD" textFill="WHITE">
          <font>
             <Font name="Arial" size="21.0" />
          </font>
