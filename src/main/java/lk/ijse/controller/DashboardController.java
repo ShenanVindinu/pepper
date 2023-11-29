@@ -7,15 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lk.ijse.dto.RecipeDto;
 import lk.ijse.dto.UserDto;
 import lk.ijse.model.RecipeModel;
+import lk.ijse.model.WishListModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -66,6 +64,8 @@ public class DashboardController {
     void searchRecipe(ActionEvent event) throws SQLException {
         String enteredIngredients = searchBar.getText(); // Get entered ingredients
 
+        WishListModel wishListModel = new WishListModel();
+
         // Fetch recipes from the database based on entered ingredients
         List<RecipeDto> filteredRecipes = RecipeModel.findRecipesByIngredients(enteredIngredients);
 
@@ -87,37 +87,30 @@ public class DashboardController {
 
             ObservableList<RecipeDto> data = FXCollections.observableArrayList(filteredRecipes);
             recipes.setItems(data);
+            recipes.setRowFactory(tv -> {
+                TableRow<RecipeDto> row = new TableRow<>();
+                row.setOnMouseClicked(event2 -> {
+                    if (event2.getClickCount() == 1 && !row.isEmpty()) {
+                        RecipeDto selectedRecipe = row.getItem();
+                        String recipeId = selectedRecipe.getRecipe_id();
+                        // Calling another function and pass the recipe ID
+                        try {
+                           wishListModel.addRecipeToWishlist(recipeId);
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                        System.out.print("clicked recipe " + recipeId);
+                    }
+
+                });
+                return row;
+            });
         } else {
-            // Handle scenario when no recipes are found
             // Clear the table or display a message indicating no matching recipes
             recipes.getItems().clear();
         }
     }
-
-    //
-//    @FXML
-//    void addToWishlistTable(ActionEvent event) throws SQLException {
-//        String enteredRecipeId = wishList_ids.getText();
-//
-//        //get Current userId
-//        UserDto userDto = new UserDto();
-//        String userId = userDto.getUser_id();
-//
-//        // Fetch recipes from the database based on entered Id
-//        List<RecipeDto> filteredRecipes = RecipeModel.findRecipeByIds(enteredRecipeId);
-//
-//        // Instantiate the controller
-//        WishlistController wishlistController = new WishlistController();
-//        // Instantiate the model
-//        RecipeModel recipeModel = new RecipeModel();
-//
-//        // Populate table in wishList page with given data using the instance
-//        wishlistController.populateTable(filteredRecipes);
-//
-//
-//        // Add RecipeId and UserId to Wishlist Table using the instance
-//        recipeModel.addIdsToWishlist(enteredRecipeId,userId);
-//    }
 
 
     @FXML

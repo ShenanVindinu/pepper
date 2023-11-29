@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -138,12 +137,6 @@
          </font>
       </Label>
       <Button fx:id="clearWishlistButton" layoutX="953.0" layoutY="728.0" mnemonicParsing="false" onAction="#clearWishlist" prefHeight="45.0" prefWidth="201.0" style="-fx-background-color: #AF2655; -fx-background-radius: 20;" text="Clear Wishllist" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="21.0" />
-         </font>
-      </Button>
-      <TextField fx:id="addToWishlistTextField" layoutX="325.0" layoutY="728.0" prefHeight="45.0" prefWidth="303.0" promptText="    Type Recipe ID to Add" style="-fx-background-color: #eeeeee; -fx-background-radius: 15;" />
-      <Button fx:id="addToWishlistButton" layoutX="607.0" layoutY="728.0" mnemonicParsing="false" onAction="#addToWishlist" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: #AF2655; -fx-background-radius: 20;" text="ADD" textFill="WHITE">
          <font>
             <Font name="Arial" size="21.0" />
          </font>

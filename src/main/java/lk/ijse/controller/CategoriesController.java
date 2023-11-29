@@ -15,7 +15,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import lk.ijse.dto.RecipeDto;
-import lk.ijse.model.CategoryModel;
 import lk.ijse.model.RecipeModel;
 
 import java.io.IOException;

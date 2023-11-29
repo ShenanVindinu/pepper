@@ -46,15 +46,15 @@ public class ProfileModel {
             }
             System.err.println("Transaction failed: " + e.getMessage());
         } finally {
-            // Always set autocommit back to true and close the connection
+            // Always set autocommit back to true (for safety)
             try {
                 connection.setAutoCommit(true);
-                connection.close();
-            } catch (SQLException closeException) {
-                System.err.println("Error closing connection: " + closeException.getMessage());
+            } catch (SQLException setAutoCommitException) {
+                System.err.println("Error setting autocommit: " + setAutoCommitException.getMessage());
             }
         }
     }
+
 
     public List<String> getAllergyIngredients() throws SQLException {
         List<String> ingredients = new ArrayList<>();
@@ -71,9 +71,6 @@ public class ProfileModel {
             e.printStackTrace();
             // Handle exceptions
         }
-
-        // Do not close the connection here
-
         return ingredients;
     }
 

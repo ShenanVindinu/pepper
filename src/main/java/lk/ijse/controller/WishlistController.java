@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -21,10 +22,12 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class WishlistController {
+public class WishlistController implements Initializable {
 
     @FXML
     private Button LogoutButton;
@@ -66,6 +69,37 @@ public class WishlistController {
     private TableView<RecipeDto> recipeTable;
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        populateWishlist();
+    }
+
+
+    public void populateWishlist() {
+        try {
+            WishListModel wishListModel = new WishListModel();
+            List<RecipeDto> wishlistItems = wishListModel.getAllWishlistItems();
+
+            // Clear existing data in columns
+            recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_id"));
+            recipeNameColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_name"));
+            ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient_name"));
+
+            // Populate columns with retrieved data
+            if (!wishlistItems.isEmpty()) {
+                ObservableList<RecipeDto> data = FXCollections.observableArrayList(wishlistItems);
+                recipeTable.setItems(data);
+            } else {
+                // Handle the case when the wishlist is empty
+            }
+        } catch (SQLException e) {
+            // Handle SQL exception
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 
 
@@ -84,33 +118,6 @@ public class WishlistController {
                 );
 
         JasperViewer.viewReport(jasperPrint, false);
-    }
-
-
-    @FXML
-    void addToWishlist(ActionEvent event) {
-        String recipeIdToAdd = addToWishlistTextField.getText();
-        if (!recipeIdToAdd.isEmpty()) {
-            try {
-                WishListModel wishListModel = new WishListModel();
-                RecipeDto addedRecipe = wishListModel.addRecipeToWishlist(recipeIdToAdd);
-
-                if (addedRecipe != null) {
-                    // If the recipe was added to the wishlist, update the table
-                    ObservableList<RecipeDto> currentItems = recipeTable.getItems();
-                    currentItems.add(addedRecipe);
-                    recipeTable.setItems(currentItems);
-                    showAlert("Recipe added to Wishlist!");
-                } else {
-                    showAlert("Recipe not found or could not be added to Wishlist.");
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                showAlert("Error occurred while adding recipe to Wishlist.");
-            }
-        } else {
-            showAlert("Please enter a Recipe ID to add to Wishlist.");
-        }
     }
 
 
@@ -162,5 +169,6 @@ public class WishlistController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
 
 }

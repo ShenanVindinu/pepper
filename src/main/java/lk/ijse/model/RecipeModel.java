@@ -72,13 +72,12 @@ public class RecipeModel {
             recipes.add(recipe);
         }
 
-        // Close resources
-        resultSet.close();
-        preparedStatement.close();
-        connection.close();
+        // Note: Do not close the connection, preparedStatement, or resultSet here
+        //It might cause errors
 
         return recipes;
     }
+
 
     public void addIdsToWishlist(String recipeId, String recipeName) throws SQLException {
         Connection connection = null;
@@ -92,15 +91,14 @@ public class RecipeModel {
             preparedStatement.setString(2, recipeName);
             preparedStatement.executeUpdate();
         } finally {
-            // Close resources in a finally block to ensure they're closed properly
+            // Close resources except the connection in a finally block to ensure they're closed properly
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection != null) {
-                connection.close();
-            }
+            // Do not close the connection here
         }
     }
+
 
     public List<RecipeDto> getSriLankanFoods() throws SQLException {
         List<RecipeDto> sriLankanFoods = new ArrayList<>();
@@ -133,7 +131,7 @@ public class RecipeModel {
             e.printStackTrace();
             // Handle exceptions or log them
         } finally {
-            // Close resources in the reverse order of their creation to avoid potential issues
+            // Close resources except the connection
             if (resultSet != null) {
                 try {
                     resultSet.close();
@@ -148,29 +146,22 @@ public class RecipeModel {
                     e.printStackTrace();
                 }
             }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            // Do not close the connection here
         }
 
         return sriLankanFoods;
     }
 
+
     public List<RecipeDto> getThaiFoods() throws SQLException {
         List<RecipeDto> thaiFoods = new ArrayList<>();
         Connection connection = DbConnection.getInstance().getConnection();
 
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
-                            "FROM recipe " +
-                            "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
-                            "WHERE category.category_name = ?");
-
+        try (PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
+                        "FROM recipe " +
+                        "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
+                        "WHERE category.category_name = ?")) {
 
             preparedStatement.setString(1, "Thai"); // Adjust to the appropriate category name
 
@@ -187,31 +178,21 @@ public class RecipeModel {
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle exceptions
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                // Handle closing connection exception
-            }
         }
 
         return thaiFoods;
     }
 
+
     public List<RecipeDto> getAmericanFoods() throws SQLException {
         List<RecipeDto> americanFoods = new ArrayList<>();
         Connection connection = DbConnection.getInstance().getConnection();
 
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
-                            "FROM recipe " +
-                            "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
-                            "WHERE category.category_name = ?"
-            );
+        try (PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
+                        "FROM recipe " +
+                        "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
+                        "WHERE category.category_name = ?")) {
 
             preparedStatement.setString(1, "American");
 
@@ -228,32 +209,22 @@ public class RecipeModel {
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle exceptions
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                // Handle closing connection exception
-            }
         }
 
         return americanFoods;
     }
 
 
+
     public List<RecipeDto> getIndianFoods() throws SQLException {
         List<RecipeDto> indianFoods = new ArrayList<>();
         Connection connection = DbConnection.getInstance().getConnection();
 
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
-                            "FROM recipe " +
-                            "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
-                            "WHERE category.category_name = ?"
-            );
+        try (PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT recipe.recipe_id, recipe.recipe_name, recipe.ingredient_name " +
+                        "FROM recipe " +
+                        "INNER JOIN category ON recipe.recipe_id = category.recipe_id " +
+                        "WHERE category.category_name = ?")) {
 
             preparedStatement.setString(1, "Indian");
 
@@ -270,29 +241,9 @@ public class RecipeModel {
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle exceptions
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                // Handle closing connection exception
-            }
         }
 
         return indianFoods;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }
