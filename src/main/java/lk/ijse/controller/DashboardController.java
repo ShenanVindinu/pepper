@@ -100,7 +100,7 @@ public class DashboardController {
                             throw new RuntimeException(e);
                         }
 
-                        System.out.print("clicked recipe " + recipeId);
+                        System.out.print("recipe " + recipeId + "Added");
                     }
 
                 });

@@ -99,11 +99,6 @@ public class WishlistController implements Initializable {
     }
 
 
-
-
-
-
-
     @FXML
     void printReport(ActionEvent event) throws JRException, SQLException {
         InputStream resourceAsStream = getClass().getResourceAsStream("/reports/wishlist_items.jrxml");
@@ -160,14 +155,7 @@ public class WishlistController implements Initializable {
     void clearWishlist(ActionEvent event) throws SQLException {
         WishListModel wishListModel = new WishListModel();
         wishListModel.clearWishlist();
-    }
-
-    private static void showAlert(String content) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
+        populateWishlist();
     }
 
 

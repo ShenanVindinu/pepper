@@ -27,43 +27,27 @@ public class WishListModel {
         System.out.println(rowsAffected + " rows deleted from the wishlist table");
     }
 
-    public RecipeDto addRecipeToWishlist(String recipeId) throws SQLException {
-        Connection connection = null;
+    public void addRecipeToWishlist(String recipeId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        RecipeDto recipe = null;
 
         try {
-            // Get the database connection outside the try block
-            connection = DbConnection.getInstance().getConnection();
-
-            // Check if the recipe with the given ID exists
-            String selectQuery = "SELECT recipe_id, recipe_name, ingredient_name FROM recipe WHERE recipe_id = ?";
-            preparedStatement = connection.prepareStatement(selectQuery);
+            // Insert the recipe ID into the wishlist table
+            String insertQuery = "INSERT INTO wish_list (recipe_id) VALUES (?)";
+            preparedStatement = connection.prepareStatement(insertQuery);
             preparedStatement.setString(1, recipeId);
-            resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                // Recipe found, create a RecipeDto object
-                String foundRecipeId = resultSet.getString("recipe_id");
-                String recipeName = resultSet.getString("recipe_name");
-                String ingredientName = resultSet.getString("ingredient_name");
-
-                recipe = new RecipeDto(foundRecipeId, recipeName, ingredientName);
-
-                // Insert the recipe into the wishlist table (assuming a table named 'wishlist')
-                String insertQuery = "INSERT INTO wishlist (recipe_id, recipe_name, ingredient_name) VALUES (?, ?, ?)";
-                preparedStatement = connection.prepareStatement(insertQuery);
-                preparedStatement.setString(1, foundRecipeId);
-                preparedStatement.setString(2, recipeName);
-                preparedStatement.setString(3, ingredientName);
-                preparedStatement.executeUpdate();
-            }
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            // Close resources in the finally block
+            // Remember to handle exceptions properly in a real-world scenario
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
         }
-        return recipe;
     }
+
 
     public List<RecipeDto> getAllWishlistItems() throws SQLException {
         List<RecipeDto> wishlistItems = new ArrayList<>();
