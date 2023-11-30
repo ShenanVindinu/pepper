@@ -31,18 +31,16 @@ public class UserModel {
             return rowsInserted > 0;
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle the exception according to your application's requirements
         }
 
         return false;
     }
 
     public static String getUserIdByHash(String sha1Hash) throws SQLException {
-        Connection connection = null;
+        Connection connection;
         PreparedStatement pstm = null;
         ResultSet resultSet = null;
         String userId = null;
-
 
 
         try {

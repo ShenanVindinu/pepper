@@ -14,8 +14,8 @@ public class WishListModel {
 
 
     public void clearWishlist() throws SQLException {
-        Connection connection = null;
-        PreparedStatement statement = null;
+        Connection connection;
+        PreparedStatement statement;
 
         connection = DbConnection.getInstance().getConnection();
 
@@ -41,7 +41,6 @@ public class WishListModel {
             e.printStackTrace();
         } finally {
             // Close resources in the finally block
-            // Remember to handle exceptions properly in a real-world scenario
             if (preparedStatement != null) {
                 preparedStatement.close();
             }

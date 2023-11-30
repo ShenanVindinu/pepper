@@ -77,7 +77,6 @@ public class ProfileController implements Initializable {
     void addToExclusionsButton(ActionEvent event) throws SQLException {
         //instances
         ProfileModel profileModel = new ProfileModel();
-        RecipeModel recipeModel = new RecipeModel();
 
         String ingredient = allergicTextField.getText();
 

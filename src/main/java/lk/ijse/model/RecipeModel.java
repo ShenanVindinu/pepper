@@ -2,7 +2,6 @@ package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.RecipeDto;
-import lk.ijse.dto.UserDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -53,7 +52,7 @@ public class RecipeModel {
     public static List<RecipeDto> findRecipeByIds(String enteredId) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        // Assuming RecipeDto has fields recipe_id, recipe_name, ingredient_name, adjust the query accordingly
+
         String sqlQuery = "SELECT * FROM recipe WHERE recipe_id = ?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -129,9 +128,8 @@ public class RecipeModel {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle exceptions or log them
         } finally {
-            // Close resources except the connection
+            // Closing resources except the connection
             if (resultSet != null) {
                 try {
                     resultSet.close();
@@ -177,7 +175,7 @@ public class RecipeModel {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle exceptions
+
         }
 
         return thaiFoods;
@@ -208,7 +206,7 @@ public class RecipeModel {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle exceptions
+
         }
 
         return americanFoods;
@@ -240,7 +238,7 @@ public class RecipeModel {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle exceptions
+
         }
 
         return indianFoods;

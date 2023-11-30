@@ -148,7 +148,17 @@ public class WishlistController implements Initializable {
     void clearWishlist(ActionEvent event) throws SQLException {
         WishListModel wishListModel = new WishListModel();
         wishListModel.clearWishlist();
-        populateWishlist();
+        // Clear the existing data in the table view
+        recipeTable.getItems().clear();
+        showAlert("All Recipes in the Wishlist Got Cleared!");
+    }
+
+    private void showAlert(String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Done");
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
 

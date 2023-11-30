@@ -95,6 +95,7 @@ public class DashboardController {
                         // Calling another function and pass the recipe ID
                         try {
                            wishListModel.addRecipeToWishlist(recipeId);
+                            showAlert("Added to Wishlist");
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
                         }
@@ -145,6 +146,14 @@ public class DashboardController {
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_page.fxml"));
         Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
+    }
+
+    private void showAlert(String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
 
