@@ -16,7 +16,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import lk.ijse.dto.RecipeDto;
 import lk.ijse.model.RecipeModel;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -76,7 +75,6 @@ public class CategoriesController {
 
             ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(indianFoods);
 
-            // Assuming recipeTable is the TableView and columns are recipeIdColumn, recipeNameColumn, and ingredientColumn
             recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_id"));
             recipeNameColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_name"));
             ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient_name"));
@@ -85,13 +83,12 @@ public class CategoriesController {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle SQLException
         }
     }
 
 
     @FXML
-    void americanFoods(ActionEvent event) throws SQLException {
+    void americanFoods(ActionEvent event) {
         RecipeModel recipeModel = new RecipeModel();
         clearTable();
 
@@ -100,7 +97,6 @@ public class CategoriesController {
 
             ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(americanFoods);
 
-            // Assuming recipeTable is the TableView and columns are recipeIdColumn, recipeNameColumn, and ingredientColumn
             recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_id"));
             recipeNameColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_name"));
             ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient_name"));
@@ -109,13 +105,12 @@ public class CategoriesController {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle SQLException
         }
     }
 
 
     @FXML
-    void srilankanFoods(ActionEvent event) throws SQLException, IOException {
+    void srilankanFoods(ActionEvent event) {
 
         RecipeModel recipeModel = new RecipeModel();
         clearTable();
@@ -125,7 +120,6 @@ public class CategoriesController {
 
             ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(sriLankanFoods);
 
-            // Assuming recipeTable is the TableView and columns are recipeIdColumn, recipeNameColumn, and ingredientColumn
             recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_id"));
             recipeNameColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_name"));
             ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient_name"));
@@ -135,7 +129,6 @@ public class CategoriesController {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle SQLException
         }
     }
 
@@ -156,11 +149,8 @@ public class CategoriesController {
             ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient_name"));
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle SQL exception
         }
     }
-
-
 
 
     @FXML
@@ -171,6 +161,7 @@ public class CategoriesController {
         window.setScene(new Scene(rootNode, 1200,800));
     }
 
+
     @FXML
     void recipe(ActionEvent event) throws IOException {
         //change Scene to dashboard
@@ -179,6 +170,7 @@ public class CategoriesController {
         window.setScene(new Scene(rootNode, 1200,800));
     }
 
+
     @FXML
     void wishlist(MouseEvent event) throws IOException {
         //change Scene to wishlist page
@@ -186,6 +178,7 @@ public class CategoriesController {
         Stage window = (Stage) wishlistButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
     }
+
 
     // Method to clear the table
     private void clearTable() {
@@ -197,7 +190,7 @@ public class CategoriesController {
 
     @FXML
     void logout(ActionEvent event) throws IOException {
-        //change Scene to signin page
+        //change Scene to signing page
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_page.fxml"));
         Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));

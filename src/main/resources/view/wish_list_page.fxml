@@ -107,11 +107,11 @@
         </VBox>
         <ScrollPane layoutX="325.0" layoutY="212.0" prefHeight="490.0" prefWidth="834.0">
          <content>
-            <TableView fx:id="recipeTable" prefHeight="490.0" prefWidth="833.0">
+            <TableView fx:id="recipeTable" prefHeight="488.0" prefWidth="832.0" stylesheets="@../css/fullpackstyling.css">
               <columns>
-                <TableColumn fx:id="recipeIdColumn" prefWidth="123.0" text="Recipe_id" />
-                <TableColumn fx:id="recipeNameColumn" prefWidth="318.0" text="Recipe_name" />
-                  <TableColumn fx:id="ingredientColumn" prefWidth="391.0" text="Ingredients" />
+                <TableColumn fx:id="recipeIdColumn" prefWidth="208.0" text="     Recipe_id" />
+                <TableColumn fx:id="recipeNameColumn" prefWidth="223.0" text="   Recipe_name" />
+                  <TableColumn fx:id="ingredientColumn" prefWidth="401.0" text="   Ingredients" />
               </columns>
             </TableView>
          </content>
@@ -136,7 +136,7 @@
             <Font name="Chilanka Regular" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="clearWishlistButton" layoutX="953.0" layoutY="728.0" mnemonicParsing="false" onAction="#clearWishlist" prefHeight="45.0" prefWidth="201.0" style="-fx-background-color: #AF2655; -fx-background-radius: 20;" text="Clear Wishllist" textFill="WHITE">
+      <Button fx:id="clearWishlistButton" layoutX="958.0" layoutY="728.0" mnemonicParsing="false" onAction="#clearWishlist" prefHeight="45.0" prefWidth="201.0" style="-fx-background-color: #AF2655; -fx-background-radius: 20;" text="Clear Wishllist" textFill="WHITE">
          <font>
             <Font name="Arial" size="21.0" />
          </font>

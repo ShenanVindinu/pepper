@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1200" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ProfileController">
@@ -107,40 +106,34 @@
                 <Pane prefHeight="36.0" prefWidth="277.0" />
             </children>
         </VBox>
-      <Label layoutX="331.0" layoutY="56.0" text="User Name">
-         <font>
-            <Font name="Georgia" size="24.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#eeeeee" height="37.0" layoutX="492.0" layoutY="52.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="585.0" />
-      <Label fx:id="userName" layoutX="532.0" layoutY="60.0" text="Shenan" textFill="#9e9e9e">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="allergicTextField" layoutX="344.0" layoutY="264.0" prefHeight="50.0" prefWidth="585.0" promptText="    Type Allergic Ingredient to exclude from searches" style="-fx-background-color: #eeeeee; -fx-background-radius: 45;">
+      <TextField fx:id="allergicTextField" layoutX="344.0" layoutY="264.0" prefHeight="50.0" prefWidth="645.0" promptText="    Type Allergic Ingredient to exclude from searches" style="-fx-background-color: #eeeeee; -fx-background-radius: 45;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label layoutX="636.0" layoutY="196.0" text="User Allergies">
+      <Label layoutX="663.0" layoutY="188.0" text="User Allergies" underline="true">
          <font>
-            <Font name="Georgia" size="24.0" />
+            <Font name="Chilanka Regular" size="25.0" />
          </font>
       </Label>
       <ScrollPane layoutX="348.0" layoutY="369.0" prefHeight="387.0" prefWidth="787.0">
          <content>
-            <TableView fx:id="ingredientTable" prefHeight="386.0" prefWidth="786.0">
+            <TableView fx:id="ingredientTable" prefHeight="385.0" prefWidth="785.0" stylesheets="@../css/fullpackstyling.css">
               <columns>
-                <TableColumn fx:id="ingredientColumn" prefWidth="784.0" text="Current Allergic Ingredients" />
+                <TableColumn fx:id="ingredientColumn" prefWidth="784.0" text="                                                                Current Allergic Ingredients" />
               </columns>
             </TableView>
          </content>
       </ScrollPane>
-      <Button fx:id="addExclude" layoutX="958.0" layoutY="264.0" mnemonicParsing="false" onAction="#addToExclusionsButton" prefHeight="50.0" prefWidth="119.0" style="-fx-background-color: #AF2655; -fx-background-radius: 15;" text="Add" textFill="WHITE">
+      <Button fx:id="addExclude" layoutX="1016.0" layoutY="264.0" mnemonicParsing="false" onAction="#addToExclusionsButton" prefHeight="50.0" prefWidth="119.0" style="-fx-background-color: #AF2655; -fx-background-radius: 15;" text="Add" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Label layoutX="344.0" layoutY="39.0" text="Profile">
+         <font>
+            <Font name="Chilanka Regular" size="74.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

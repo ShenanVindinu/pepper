@@ -11,13 +11,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lk.ijse.dto.RecipeDto;
-import lk.ijse.dto.UserDto;
 import lk.ijse.model.RecipeModel;
 import lk.ijse.model.WishListModel;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+
 
 public class DashboardController {
 
@@ -121,6 +120,7 @@ public class DashboardController {
         window.setScene(new Scene(rootNode, 1200,800));
     }
 
+
     @FXML
     void profile(ActionEvent event) throws IOException {
         //change Scene to profile page
@@ -128,6 +128,7 @@ public class DashboardController {
         Stage window = (Stage) searchBar.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
     }
+
 
     @FXML
     void wishlist(ActionEvent event) throws IOException {
@@ -137,6 +138,7 @@ public class DashboardController {
         window.setScene(new Scene(rootNode, 1200,800));
     }
 
+
     @FXML
     void logout(ActionEvent event) throws IOException {
         //change Scene to signing page
@@ -144,5 +146,6 @@ public class DashboardController {
         Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
     }
+
 
 }

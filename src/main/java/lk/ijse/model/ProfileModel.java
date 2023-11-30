@@ -69,7 +69,6 @@ public class ProfileModel {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle exceptions
         }
         return ingredients;
     }

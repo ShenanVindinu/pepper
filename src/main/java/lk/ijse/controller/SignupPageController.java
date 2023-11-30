@@ -45,10 +45,16 @@ public class SignupPageController {
     }
 
     @FXML
-    void signiup(ActionEvent event) throws IOException {
+    void signiup(ActionEvent event) {
         String userName = this.userName.getText();
         String password = this.password.getText();
         String userId = this.userId.getText();
+
+        // Validate username against regex
+        if (!validateUsername(userName)) {
+            showAlert("Invalid Username", "Username should contain only letters, numbers, and underscores.");
+            return; // Stop further processing
+        }
 
         // passing 'username' and 'password' to your login logic
         boolean isSignedUp = performSignup(userName, password, userId);
@@ -68,10 +74,16 @@ public class SignupPageController {
         String sha1Hex = DigestUtils.sha1Hex(combinedString);
         //System.out.println("SHA-1 hash of '" + combinedString + "': " + sha1Hex);
 
-        // Create a UserDto object by passing username and password
+        // Creating a UserDto object by passing username and password
         UserDto userDto = new UserDto(userId, userName, sha1Hex);
 
         return UserModel.saveToDatabase(userDto);
+    }
+
+    private boolean validateUsername(String username) {
+        // Regex pattern allowing only letters, numbers, and underscores
+        String regexPattern = "^[a-zA-Z0-9_]+$";
+        return username.matches(regexPattern);
     }
 
     private void showAlert(String title, String content) {

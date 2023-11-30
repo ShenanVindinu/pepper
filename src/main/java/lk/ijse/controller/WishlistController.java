@@ -1,6 +1,6 @@
 package lk.ijse.controller;
 
-import javafx.beans.property.SimpleStringProperty;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -89,11 +89,8 @@ public class WishlistController implements Initializable {
             if (!wishlistItems.isEmpty()) {
                 ObservableList<RecipeDto> data = FXCollections.observableArrayList(wishlistItems);
                 recipeTable.setItems(data);
-            } else {
-                // Handle the case when the wishlist is empty
             }
         } catch (SQLException e) {
-            // Handle SQL exception
             e.printStackTrace();
         }
     }
@@ -109,14 +106,10 @@ public class WishlistController implements Initializable {
                 JasperFillManager.fillReport(
                         jasperReport, //compiled report
                         null,
-                        DbConnection.getInstance().getConnection()//database connection
+                        DbConnection.getInstance().getConnection() //database connection
                 );
-
         JasperViewer.viewReport(jasperPrint, false);
     }
-
-
-
 
 
     @FXML
@@ -129,7 +122,7 @@ public class WishlistController implements Initializable {
 
     @FXML
     void findRecipe(ActionEvent event) throws IOException {
-        //change Scene to dashboar
+        //change Scene to dashboard
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard_page.fxml"));
         Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));

@@ -1,4 +1,5 @@
 package lk.ijse.controller;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,12 +8,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import javafx.event.ActionEvent;
-import lk.ijse.dto.UserDto;
 import lk.ijse.model.UserModel;
 import org.apache.commons.codec.digest.DigestUtils;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -60,13 +58,10 @@ public class LoginPageController {
 
         //generating hashcode
         String sha1Hex = DigestUtils.sha1Hex(combinedString);
-        //System.out.println("SHA-1 hash of '" + combinedString + "': " + sha1Hex);
+        //System.out.println("SHA-1 hash of '" + combinedString + "': " + sha1Hex); //for developer use
 
         String userIdByHash = null;
         userIdByHash = UserModel.getUserIdByHash(sha1Hex);
-
-        //passing userId to other Controllers, so they know which user they are working with...
-        passUserId(userIdByHash);
 
         return userIdByHash != null;
 
@@ -88,7 +83,5 @@ public class LoginPageController {
         alert.showAndWait();
     }
 
-    public static String passUserId(String userId) {
-        return userId;
-    }
+
 }

@@ -6,18 +6,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import lk.ijse.model.ProfileModel;
 import lk.ijse.model.RecipeModel;
-
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ProfileController {
+public class ProfileController implements Initializable {
 
     @FXML
     private TableColumn<String, String> ingredientColumn;
@@ -50,6 +51,28 @@ public class ProfileController {
     private Label userName;
 
 
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ProfileModel profileModel = new ProfileModel();
+
+        try {
+            // Fetch all allergy ingredients from the database
+            ObservableList<String> allergyIngredients = FXCollections.observableArrayList(profileModel.getAllergyIngredients());
+
+            // Setting the retrieved data to the table
+            ingredientTable.setItems(allergyIngredients);
+            ingredientColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
     @FXML
     void addToExclusionsButton(ActionEvent event) throws SQLException {
         //instances
@@ -69,8 +92,6 @@ public class ProfileController {
         ingredientColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
 
     }
-
-
 
 
     @FXML
@@ -104,5 +125,6 @@ public class ProfileController {
         Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
     }
+
 
 }
