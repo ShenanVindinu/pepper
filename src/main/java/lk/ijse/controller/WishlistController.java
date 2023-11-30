@@ -130,7 +130,7 @@ public class WishlistController implements Initializable {
 
     @FXML
     void logout(ActionEvent event) throws IOException {
-        //change Scene to signin page
+        //change Scene to signing page
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_page.fxml"));
         Stage window = (Stage) LogoutButton.getScene().getWindow();
         window.setScene(new Scene(rootNode, 1200,800));
