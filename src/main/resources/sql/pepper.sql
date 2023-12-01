@@ -1,3 +1,6 @@
+create database pepper;
+use pepper;
+
 create table allergy
 (
     ingredient varchar(50) null
