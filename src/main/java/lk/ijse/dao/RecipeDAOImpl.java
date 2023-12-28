@@ -10,9 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeDAOImpl {
+public class RecipeDAOImpl implements RecipeDAO {
 
-
+    @Override
     public List<RecipeDto> findRecipesByIngredients(String enteredIngredients) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -48,6 +48,7 @@ public class RecipeDAOImpl {
         return recipes;
     }
 
+    @Override
     public List<RecipeDto> getIndianFoods() throws SQLException {
         List<RecipeDto> indianFoods = new ArrayList<>();
         Connection connection = DbConnection.getInstance().getConnection();
@@ -78,6 +79,7 @@ public class RecipeDAOImpl {
         return indianFoods;
     }
 
+    @Override
     public List<RecipeDto> getAmericanFoods() throws SQLException {
         List<RecipeDto> americanFoods = new ArrayList<>();
         Connection connection = DbConnection.getInstance().getConnection();
@@ -108,7 +110,7 @@ public class RecipeDAOImpl {
         return americanFoods;
     }
 
-
+    @Override
     public List<RecipeDto> getSriLankanFoods() throws SQLException {
         List<RecipeDto> sriLankanFoods = new ArrayList<>();
         Connection connection = null;
@@ -160,7 +162,7 @@ public class RecipeDAOImpl {
         return sriLankanFoods;
     }
 
-
+    @Override
     public List<RecipeDto> getThaiFoods() throws SQLException {
         List<RecipeDto> thaiFoods = new ArrayList<>();
         Connection connection = DbConnection.getInstance().getConnection();

@@ -9,7 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-import lk.ijse.model.UserModel;
+import lk.ijse.dao.UserDAO;
+import lk.ijse.dao.UserDAOImpl;
 import org.apache.commons.codec.digest.DigestUtils;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,7 +24,8 @@ public class LoginPageController {
     private PasswordField passwordField;
 
 
-    public LoginPageController() {}
+    UserDAO userDAO = new UserDAOImpl();
+
 
     @FXML
     public void login(ActionEvent event) throws IOException, SQLException {
@@ -61,7 +63,7 @@ public class LoginPageController {
         //System.out.println("SHA-1 hash of '" + combinedString + "': " + sha1Hex); //for developer use
 
         String userIdByHash = null;
-        userIdByHash = UserModel.getUserIdByHash(sha1Hex);
+        userIdByHash = userDAO.getUserIdByHash(sha1Hex);
 
         return userIdByHash != null;
 

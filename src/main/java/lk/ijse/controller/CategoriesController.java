@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import lk.ijse.dao.RecipeDAO;
 import lk.ijse.dao.RecipeDAOImpl;
 import lk.ijse.dto.RecipeDto;
 import java.io.IOException;
@@ -62,12 +63,11 @@ public class CategoriesController {
     private TableColumn<RecipeDto, String> ingredientColumn;
 
 
-
+    RecipeDAO recipeDAO = new RecipeDAOImpl();
 
 
     @FXML
     void IndianFoods(ActionEvent event) {
-        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
         clearTable();
 
         try {
@@ -89,7 +89,6 @@ public class CategoriesController {
 
     @FXML
     void americanFoods(ActionEvent event) {
-        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
         clearTable();
 
         try {
@@ -111,8 +110,6 @@ public class CategoriesController {
 
     @FXML
     void srilankanFoods(ActionEvent event) {
-
-        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
         clearTable();
 
         try {
@@ -135,7 +132,7 @@ public class CategoriesController {
 
     @FXML
     void thaiFoods(ActionEvent event) {
-        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
+
 
         try {
             List<RecipeDto> thaiFoodsList = recipeDAO.getThaiFoods();

@@ -10,10 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lk.ijse.dao.RecipeDAO;
 import lk.ijse.dao.RecipeDAOImpl;
+import lk.ijse.dao.WishListDAO;
+import lk.ijse.dao.WishListDAOImpl;
 import lk.ijse.dto.RecipeDto;
-import lk.ijse.model.RecipeModel;
-import lk.ijse.model.WishListModel;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -57,15 +58,15 @@ public class DashboardController {
     @FXML
     private Button searchButton;
 
-
+    WishListDAO wishListDAO = new WishListDAOImpl();
+    RecipeDAO recipeDAO = new RecipeDAOImpl();
 
 
     @FXML
     void searchRecipe(ActionEvent event) throws SQLException {
         String enteredIngredients = searchBar.getText(); // Get entered ingredients
 
-        WishListModel wishListModel = new WishListModel();
-        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
+
 
         // Fetch recipes from the database based on entered ingredients
         List<RecipeDto> filteredRecipes = recipeDAO.findRecipesByIngredients(enteredIngredients);
@@ -96,7 +97,7 @@ public class DashboardController {
                         String recipeId = selectedRecipe.getRecipe_id();
                         // Calling another function and pass the recipe ID
                         try {
-                           wishListModel.addRecipeToWishlist(recipeId);
+                           wishListDAO.addRecipeToWishlist(recipeId);
                             showAlert("Added to Wishlist");
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
