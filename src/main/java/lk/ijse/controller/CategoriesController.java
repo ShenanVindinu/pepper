@@ -14,8 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import lk.ijse.dao.RecipeDAOImpl;
 import lk.ijse.dto.RecipeDto;
-import lk.ijse.model.RecipeModel;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -67,11 +67,11 @@ public class CategoriesController {
 
     @FXML
     void IndianFoods(ActionEvent event) {
-        RecipeModel recipeModel = new RecipeModel();
+        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
         clearTable();
 
         try {
-            List<RecipeDto> indianFoods = recipeModel.getIndianFoods();
+            List<RecipeDto> indianFoods = recipeDAO.getIndianFoods();
 
             ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(indianFoods);
 
@@ -89,11 +89,11 @@ public class CategoriesController {
 
     @FXML
     void americanFoods(ActionEvent event) {
-        RecipeModel recipeModel = new RecipeModel();
+        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
         clearTable();
 
         try {
-            List<RecipeDto> americanFoods = recipeModel.getAmericanFoods();
+            List<RecipeDto> americanFoods = recipeDAO.getAmericanFoods();
 
             ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(americanFoods);
 
@@ -112,11 +112,11 @@ public class CategoriesController {
     @FXML
     void srilankanFoods(ActionEvent event) {
 
-        RecipeModel recipeModel = new RecipeModel();
+        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
         clearTable();
 
         try {
-            List<RecipeDto> sriLankanFoods = recipeModel.getSriLankanFoods();
+            List<RecipeDto> sriLankanFoods = recipeDAO.getSriLankanFoods();
 
             ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(sriLankanFoods);
 
@@ -135,10 +135,10 @@ public class CategoriesController {
 
     @FXML
     void thaiFoods(ActionEvent event) {
-        RecipeModel recipeModel = new RecipeModel();
+        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
 
         try {
-            List<RecipeDto> thaiFoodsList = recipeModel.getThaiFoods();
+            List<RecipeDto> thaiFoodsList = recipeDAO.getThaiFoods();
             clearTable();
 
             ObservableList<RecipeDto> data = FXCollections.observableArrayList(thaiFoodsList);

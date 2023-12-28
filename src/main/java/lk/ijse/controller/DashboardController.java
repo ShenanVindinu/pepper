@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lk.ijse.dao.RecipeDAOImpl;
 import lk.ijse.dto.RecipeDto;
 import lk.ijse.model.RecipeModel;
 import lk.ijse.model.WishListModel;
@@ -64,9 +65,10 @@ public class DashboardController {
         String enteredIngredients = searchBar.getText(); // Get entered ingredients
 
         WishListModel wishListModel = new WishListModel();
+        RecipeDAOImpl recipeDAO = new RecipeDAOImpl();
 
         // Fetch recipes from the database based on entered ingredients
-        List<RecipeDto> filteredRecipes = RecipeModel.findRecipesByIngredients(enteredIngredients);
+        List<RecipeDto> filteredRecipes = recipeDAO.findRecipesByIngredients(enteredIngredients);
 
         // Clear existing data in columns
         recipe_id.setCellValueFactory(new PropertyValueFactory<>(""));

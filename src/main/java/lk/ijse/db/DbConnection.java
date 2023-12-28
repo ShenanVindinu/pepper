@@ -12,7 +12,7 @@ public class DbConnection {
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/pepper",
                 "root",
-                "Ijse@1234"
+                "Ijse@123"
         );
     }
 
