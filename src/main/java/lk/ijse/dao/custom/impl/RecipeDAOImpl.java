@@ -82,7 +82,23 @@ public class RecipeDAOImpl implements RecipeDAO {
 
     @Override
     public void add(String c) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = null;
 
+        try {
+            // Insert the recipe ID into the wishlist table
+            String insertQuery = "INSERT INTO wish_list (recipe_id) VALUES (?)";
+            preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setString(1, c);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources in the finally block
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        }
     }
 
     @Override

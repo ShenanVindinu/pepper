@@ -17,8 +17,8 @@ public class DashBoardBOImpl implements DashBoardBO {
         return recipeDAO.findRecipesByIngredients(ingredient);
     }
 
-    public void addRecipeToWishlist(String ingredient) throws SQLException {
-        recipeDAO.add(ingredient);
+    public void addRecipeToWishlist(String recipeId) throws SQLException {
+        recipeDAO.add(recipeId);
     }
 
 }
