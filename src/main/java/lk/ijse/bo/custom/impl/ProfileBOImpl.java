@@ -9,9 +9,9 @@ import java.util.List;
 
 public class ProfileBOImpl implements ProfileBO {
 
-    ProfileDAO profileDAO = new ProfileDAOImpl();
+    ProfileDAOImpl profileDAO = new ProfileDAOImpl();
 
-    public void excludeIngredient(String ingredient) throws SQLException {
+    public void excludeIngredient(String ingredient) throws SQLException, ClassNotFoundException {
         profileDAO.add(ingredient);
     }
 

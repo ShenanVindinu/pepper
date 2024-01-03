@@ -73,7 +73,7 @@ public class ProfileController implements Initializable {
 
 
     @FXML
-    void addToExclusionsButton(ActionEvent event) throws SQLException {
+    void addToExclusionsButton(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         String ingredient = allergicTextField.getText();
 

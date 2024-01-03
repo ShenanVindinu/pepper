@@ -98,7 +98,7 @@ public class DashboardController {
                         try {
                            dashBoardBO.addRecipeToWishlist(recipeId);
                             showAlert("Added to Wishlist");
-                        } catch (SQLException e) {
+                        } catch (SQLException | ClassNotFoundException e) {
                             throw new RuntimeException(e);
                         }
 
