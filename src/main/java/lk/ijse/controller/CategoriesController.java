@@ -14,8 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import lk.ijse.dao.RecipeDAO;
-import lk.ijse.dao.RecipeDAOImpl;
+import lk.ijse.bo.custom.CategoriesBO;
+import lk.ijse.bo.custom.impl.CategoriesBOImpl;
 import lk.ijse.dto.RecipeDto;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -63,7 +63,8 @@ public class CategoriesController {
     private TableColumn<RecipeDto, String> ingredientColumn;
 
 
-    RecipeDAO recipeDAO = new RecipeDAOImpl();
+
+    CategoriesBO categoriesBO = new CategoriesBOImpl();
 
 
     @FXML
@@ -71,7 +72,7 @@ public class CategoriesController {
         clearTable();
 
         try {
-            List<RecipeDto> indianFoods = recipeDAO.getIndianFoods();
+            List<RecipeDto> indianFoods = categoriesBO.getFoods("Indian");
 
             ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(indianFoods);
 
@@ -92,7 +93,7 @@ public class CategoriesController {
         clearTable();
 
         try {
-            List<RecipeDto> americanFoods = recipeDAO.getAmericanFoods();
+            List<RecipeDto> americanFoods = categoriesBO.getFoods("American");
 
             ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(americanFoods);
 
@@ -113,7 +114,7 @@ public class CategoriesController {
         clearTable();
 
         try {
-            List<RecipeDto> sriLankanFoods = recipeDAO.getSriLankanFoods();
+            List<RecipeDto> sriLankanFoods = categoriesBO.getFoods("Sri Lankan");
 
             ObservableList<RecipeDto> observableList = FXCollections.observableArrayList(sriLankanFoods);
 
@@ -133,9 +134,8 @@ public class CategoriesController {
     @FXML
     void thaiFoods(ActionEvent event) {
 
-
         try {
-            List<RecipeDto> thaiFoodsList = recipeDAO.getThaiFoods();
+            List<RecipeDto> thaiFoodsList = categoriesBO.getFoods("Thai");
             clearTable();
 
             ObservableList<RecipeDto> data = FXCollections.observableArrayList(thaiFoodsList);

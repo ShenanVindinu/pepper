@@ -1,5 +1,6 @@
-package lk.ijse.dao;
+package lk.ijse.dao.custom.impl;
 
+import lk.ijse.dao.custom.WishListDAO;
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.RecipeDto;
 
@@ -29,7 +30,7 @@ public class WishListDAOImpl implements WishListDAO {
     }
 
     @Override
-    public void addRecipeToWishlist(String recipeId) throws SQLException {
+    public void add(String recipeId) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = null;
 
@@ -50,7 +51,7 @@ public class WishListDAOImpl implements WishListDAO {
     }
 
     @Override
-    public List<RecipeDto> getAllWishlistItems() throws SQLException {
+    public List<RecipeDto> get() throws SQLException {
         List<RecipeDto> wishlistItems = new ArrayList<>();
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement statement = null;
@@ -82,6 +83,11 @@ public class WishListDAOImpl implements WishListDAO {
         }
 
         return wishlistItems;
+    }
+
+    @Override
+    public List<RecipeDto> getFoods(String category) throws SQLException {
+        return null;
     }
 
 

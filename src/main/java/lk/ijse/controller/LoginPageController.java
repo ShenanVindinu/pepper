@@ -9,8 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-import lk.ijse.dao.UserDAO;
-import lk.ijse.dao.UserDAOImpl;
+import lk.ijse.bo.custom.LoginPageBO;
+import lk.ijse.bo.custom.impl.LoginPageBOImpl;
 import org.apache.commons.codec.digest.DigestUtils;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,7 +24,9 @@ public class LoginPageController {
     private PasswordField passwordField;
 
 
-    UserDAO userDAO = new UserDAOImpl();
+    LoginPageBO loginPageBO = new LoginPageBOImpl();
+
+
 
 
     @FXML
@@ -63,7 +65,7 @@ public class LoginPageController {
         //System.out.println("SHA-1 hash of '" + combinedString + "': " + sha1Hex); //for developer use
 
         String userIdByHash = null;
-        userIdByHash = userDAO.getUserIdByHash(sha1Hex);
+        userIdByHash = loginPageBO.getUserIdByHash(sha1Hex);
 
         return userIdByHash != null;
 

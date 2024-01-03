@@ -1,5 +1,6 @@
-package lk.ijse.dao;
+package lk.ijse.dao.custom.impl;
 
+import lk.ijse.dao.custom.ProfileDAO;
 import lk.ijse.db.DbConnection;
 
 import java.sql.Connection;
@@ -11,8 +12,9 @@ import java.util.List;
 
 public class ProfileDAOImpl implements ProfileDAO {
 
+
     @Override
-    public void addToExclusionsAndRemoveRecipes(String ingredient) throws SQLException {
+    public void add(String ingredient) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         try {
@@ -56,7 +58,7 @@ public class ProfileDAOImpl implements ProfileDAO {
     }
 
     @Override
-    public List<String> getAllergyIngredients() throws SQLException {
+    public List<String> get() throws SQLException {
         List<String> ingredients = new ArrayList<>();
         Connection connection = DbConnection.getInstance().getConnection();
         String query = "SELECT ingredient FROM allergy";
@@ -73,5 +75,9 @@ public class ProfileDAOImpl implements ProfileDAO {
         return ingredients;
     }
 
+    @Override
+    public List<String> getFoods(String category) throws SQLException {
+        return null;
+    }
 
 }

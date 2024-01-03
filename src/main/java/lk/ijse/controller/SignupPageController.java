@@ -5,8 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import lk.ijse.dao.UserDAO;
-import lk.ijse.dao.UserDAOImpl;
+import lk.ijse.bo.custom.SignupPageBO;
+import lk.ijse.bo.custom.impl.SignupPageBOImpl;
 import lk.ijse.dto.UserDto;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -37,7 +37,7 @@ public class SignupPageController {
     @FXML
     private TextField userId;
 
-    UserDAO userDAO = new UserDAOImpl();
+    SignupPageBO signupPageBO = new SignupPageBOImpl();
 
     @FXML
     void backToLoginButton(ActionEvent event) throws IOException {
@@ -48,7 +48,7 @@ public class SignupPageController {
     }
 
     @FXML
-    void signiup(ActionEvent event) {
+    void signup(ActionEvent event) {
         String userName = this.userName.getText();
         String password = this.password.getText();
         String userId = this.userId.getText();
@@ -80,7 +80,7 @@ public class SignupPageController {
         // Creating a UserDto object by passing username and password
         UserDto userDto = new UserDto(userId, userName, sha1Hex);
 
-        return userDAO.saveToDatabase(userDto);
+        return signupPageBO.saveUser(userDto);
     }
 
     private boolean validateUsername(String username) {

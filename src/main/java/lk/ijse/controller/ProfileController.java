@@ -11,8 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import lk.ijse.dao.ProfileDAO;
-import lk.ijse.dao.ProfileDAOImpl;
+import lk.ijse.bo.custom.ProfileBO;
+import lk.ijse.bo.custom.impl.ProfileBOImpl;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -50,8 +50,7 @@ public class ProfileController implements Initializable {
     @FXML
     private Label userName;
 
-
-    ProfileDAO profileDAO = new ProfileDAOImpl();
+    ProfileBO profileBO = new ProfileBOImpl();
 
 
     @Override
@@ -60,7 +59,7 @@ public class ProfileController implements Initializable {
 
         try {
             // Fetch all allergy ingredients from the database
-            ObservableList<String> allergyIngredients = FXCollections.observableArrayList(profileDAO.getAllergyIngredients());
+            ObservableList<String> allergyIngredients = FXCollections.observableArrayList(profileBO.getAllergicIngredients());
 
             // Setting the retrieved data to the table
             ingredientTable.setItems(allergyIngredients);
@@ -79,10 +78,10 @@ public class ProfileController implements Initializable {
         String ingredient = allergicTextField.getText();
 
         // Calling method in ProfileModel to add the ingredient to the exclusion list
-        profileDAO.addToExclusionsAndRemoveRecipes(ingredient);
+        profileBO.excludeIngredient(ingredient);
 
         // Fetch updated allergy table data
-        ObservableList<String> allergyIngredients = FXCollections.observableArrayList(profileDAO.getAllergyIngredients());
+        ObservableList<String> allergyIngredients = FXCollections.observableArrayList(profileBO.getAllergicIngredients());
 
         // Setting the retrieved data to the table
         ingredientTable.setItems(allergyIngredients);

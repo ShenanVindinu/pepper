@@ -1,5 +1,6 @@
-package lk.ijse.dao;
+package lk.ijse.dao.custom.impl;
 
+import lk.ijse.dao.custom.UserDAO;
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.UserDto;
 

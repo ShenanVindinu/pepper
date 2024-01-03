@@ -12,8 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import lk.ijse.dao.WishListDAO;
-import lk.ijse.dao.WishListDAOImpl;
+import lk.ijse.bo.custom.WishlistBO;
+import lk.ijse.bo.custom.impl.WishlistBOImpl;
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.RecipeDto;
 import net.sf.jasperreports.engine.*;
@@ -69,7 +69,7 @@ public class WishlistController implements Initializable {
     @FXML
     private TableView<RecipeDto> recipeTable;
 
-    WishListDAO wishListDAO = new WishListDAOImpl();
+    WishlistBO wishlistBO = new WishlistBOImpl();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -80,7 +80,7 @@ public class WishlistController implements Initializable {
     public void populateWishlist() {
         try {
 
-            List<RecipeDto> wishlistItems = wishListDAO.getAllWishlistItems();
+            List<RecipeDto> wishlistItems = wishlistBO.getWishlistItems();
 
             // Clear existing data in columns
             recipeIdColumn.setCellValueFactory(new PropertyValueFactory<>("recipe_id"));
@@ -148,7 +148,7 @@ public class WishlistController implements Initializable {
 
     @FXML
     void clearWishlist(ActionEvent event) throws SQLException {
-        wishListDAO.clearWishlist();
+        wishlistBO.clearWishlist();
         // Clear the existing data in the table view
         recipeTable.getItems().clear();
         showAlert("All Recipes in the Wishlist Got Cleared!");

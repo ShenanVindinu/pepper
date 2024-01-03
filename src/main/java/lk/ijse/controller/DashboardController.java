@@ -10,10 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import lk.ijse.dao.RecipeDAO;
-import lk.ijse.dao.RecipeDAOImpl;
-import lk.ijse.dao.WishListDAO;
-import lk.ijse.dao.WishListDAOImpl;
+import lk.ijse.bo.custom.DashBoardBO;
+import lk.ijse.bo.custom.impl.DashBoardBOImpl;
 import lk.ijse.dto.RecipeDto;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -58,8 +56,10 @@ public class DashboardController {
     @FXML
     private Button searchButton;
 
-    WishListDAO wishListDAO = new WishListDAOImpl();
-    RecipeDAO recipeDAO = new RecipeDAOImpl();
+
+    DashBoardBO dashBoardBO = new DashBoardBOImpl();
+
+
 
 
     @FXML
@@ -69,7 +69,7 @@ public class DashboardController {
 
 
         // Fetch recipes from the database based on entered ingredients
-        List<RecipeDto> filteredRecipes = recipeDAO.findRecipesByIngredients(enteredIngredients);
+        List<RecipeDto> filteredRecipes = dashBoardBO.findRecipesByIngredient(enteredIngredients);
 
         // Clear existing data in columns
         recipe_id.setCellValueFactory(new PropertyValueFactory<>(""));
@@ -95,9 +95,8 @@ public class DashboardController {
                     if (event2.getClickCount() == 1 && !row.isEmpty()) {
                         RecipeDto selectedRecipe = row.getItem();
                         String recipeId = selectedRecipe.getRecipe_id();
-                        // Calling another function and pass the recipe ID
                         try {
-                           wishListDAO.addRecipeToWishlist(recipeId);
+                           dashBoardBO.addRecipeToWishlist(recipeId);
                             showAlert("Added to Wishlist");
                         } catch (SQLException e) {
                             throw new RuntimeException(e);

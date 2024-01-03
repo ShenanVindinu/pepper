@@ -1,4 +1,4 @@
-package lk.ijse.dao;
+package lk.ijse.dao.custom;
 
 import lk.ijse.dto.UserDto;
 
