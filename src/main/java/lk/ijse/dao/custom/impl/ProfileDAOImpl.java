@@ -19,23 +19,15 @@ public class ProfileDAOImpl implements ProfileDAO {
         Connection connection = DbConnection.getInstance().getConnection();
 
 
-            // Begin transaction
+        // Begin transaction
         connection.setAutoCommit(false);
 
         // Step 1: Add ingredient to exclusion list
-//           String insertQuery = "INSERT INTO allergy (ingredient) VALUES (?)";
-//           try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-//               preparedStatement.setString(1, ingredient);
-//               preparedStatement.executeUpdate();
         SQLUtil.execute("INSERT INTO allergy (ingredient) VALUES (?)", ingredient);
         System.out.println("Ingredient added to exclusions: " + ingredient);
 
 
         // Step 2: Remove recipes with similar ingredient name
-//        String deleteQuery = "DELETE FROM recipe WHERE ingredient_name LIKE ?";
-//        try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
-//            preparedStatement.setString(1, "%" + ingredient + "%");
-//            int rowsAffected = preparedStatement.executeUpdate();
         SQLUtil.execute("DELETE FROM recipe WHERE ingredient_name LIKE ?", ingredient);
 
         // Commit the transaction if everything is successful
@@ -47,7 +39,7 @@ public class ProfileDAOImpl implements ProfileDAO {
         // Always set autocommit back to true (for safety)
         connection.setAutoCommit(true);
 
-        }
+    }
 
 
 
@@ -55,20 +47,15 @@ public class ProfileDAOImpl implements ProfileDAO {
 
 
 
-    public List<String> get() throws SQLException {
+    public List<String> get() throws SQLException, ClassNotFoundException {
         List<String> ingredients = new ArrayList<>();
-        Connection connection = DbConnection.getInstance().getConnection();
-        String query = "SELECT ingredient FROM allergy";
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+        ResultSet resultSet = SQLUtil.execute("SELECT ingredient FROM allergy");
 
-            while (resultSet.next()) {
-                ingredients.add(resultSet.getString("ingredient"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        while (resultSet.next()) {
+            ingredients.add(resultSet.getString("ingredient"));
         }
+
         return ingredients;
     }
 

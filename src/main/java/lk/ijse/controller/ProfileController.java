@@ -64,7 +64,7 @@ public class ProfileController implements Initializable {
             // Setting the retrieved data to the table
             ingredientTable.setItems(allergyIngredients);
             ingredientColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

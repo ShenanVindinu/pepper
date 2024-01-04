@@ -16,7 +16,7 @@ public class ProfileBOImpl implements ProfileBO {
     }
 
 
-    public List<String> getAllergicIngredients() throws SQLException {
+    public List<String> getAllergicIngredients() throws SQLException, ClassNotFoundException {
         return profileDAO.get();
     }
 

@@ -7,7 +7,7 @@ public interface ProfileBO {
 
 
     public void excludeIngredient(String ingredient) throws SQLException, ClassNotFoundException;
-    public List<String> getAllergicIngredients() throws SQLException;
+    public List<String> getAllergicIngredients() throws SQLException, ClassNotFoundException;
 
 
 
