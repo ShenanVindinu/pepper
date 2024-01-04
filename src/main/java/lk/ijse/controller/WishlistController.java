@@ -12,8 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.WishlistBO;
-import lk.ijse.bo.custom.impl.WishlistBOImpl;
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.RecipeDto;
 import net.sf.jasperreports.engine.*;
@@ -69,7 +69,7 @@ public class WishlistController implements Initializable {
     @FXML
     private TableView<RecipeDto> recipeTable;
 
-    WishlistBO wishlistBO = new WishlistBOImpl();
+    WishlistBO wishlistBO = (WishlistBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.WISHLIST);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

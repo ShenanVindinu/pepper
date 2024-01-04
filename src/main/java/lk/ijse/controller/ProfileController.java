@@ -11,8 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.ProfileBO;
-import lk.ijse.bo.custom.impl.ProfileBOImpl;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -50,7 +50,7 @@ public class ProfileController implements Initializable {
     @FXML
     private Label userName;
 
-    ProfileBO profileBO = new ProfileBOImpl();
+    ProfileBO profileBO = (ProfileBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PROFILE);
 
 
     @Override

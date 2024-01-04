@@ -5,8 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.SignupPageBO;
-import lk.ijse.bo.custom.impl.SignupPageBOImpl;
 import lk.ijse.dto.UserDto;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -38,7 +38,7 @@ public class SignupPageController {
     @FXML
     private TextField userId;
 
-    SignupPageBO signupPageBO = new SignupPageBOImpl();
+    SignupPageBO signupPageBO = (SignupPageBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.SIGNUP);
 
     @FXML
     void backToLoginButton(ActionEvent event) throws IOException {

@@ -10,8 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.DashBoardBO;
-import lk.ijse.bo.custom.impl.DashBoardBOImpl;
 import lk.ijse.dto.RecipeDto;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -57,7 +57,7 @@ public class DashboardController {
     private Button searchButton;
 
 
-    DashBoardBO dashBoardBO = new DashBoardBOImpl();
+    DashBoardBO dashBoardBO = (DashBoardBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.DASHBOARD);
 
 
 

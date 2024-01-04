@@ -9,8 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.LoginPageBO;
-import lk.ijse.bo.custom.impl.LoginPageBOImpl;
 import org.apache.commons.codec.digest.DigestUtils;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,7 +24,7 @@ public class LoginPageController {
     private PasswordField passwordField;
 
 
-    LoginPageBO loginPageBO = new LoginPageBOImpl();
+    LoginPageBO loginPageBO = (LoginPageBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.LOGIN);
 
 
 

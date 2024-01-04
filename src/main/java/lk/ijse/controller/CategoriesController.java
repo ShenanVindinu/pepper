@@ -14,8 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.CategoriesBO;
-import lk.ijse.bo.custom.impl.CategoriesBOImpl;
 import lk.ijse.dto.RecipeDto;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -64,7 +64,7 @@ public class CategoriesController {
 
 
 
-    CategoriesBO categoriesBO = new CategoriesBOImpl();
+    CategoriesBO categoriesBO = (CategoriesBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CATEGORIES);
 
 
     @FXML
