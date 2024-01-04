@@ -1,5 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
+import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.UserDAO;
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.UserDto;
@@ -12,28 +13,9 @@ import java.sql.SQLException;
 public class UserDAOImpl implements UserDAO {
 
     @Override
-    public boolean saveToDatabase(UserDto userDto) {
-        String username = userDto.getUser_name();
-        String sha1_hash = userDto.getSha1_hash();
-        String userId = userDto.getUser_id();
-
-        // Use DbConnection to get the connection
-        try (Connection connection = DbConnection.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(
-                     "INSERT INTO user (user_name, sha1_hash, user_id) VALUES (?, ?, ?)"
-             )) {
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, sha1_hash);
-            preparedStatement.setString(3, userId);
-
-            int rowsInserted = preparedStatement.executeUpdate();
-
-            return rowsInserted > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
+    public boolean saveToDatabase(UserDto userDto) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("INSERT INTO user (user_name, sha1_hash, user_id) VALUES (?, ?, ?)",
+                userDto.getUser_name(), userDto.getSha1_hash(), userDto.getUser_id());
     }
 
     @Override

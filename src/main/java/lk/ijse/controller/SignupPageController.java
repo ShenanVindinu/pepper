@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SignupPageController {
 
@@ -48,7 +49,7 @@ public class SignupPageController {
     }
 
     @FXML
-    void signup(ActionEvent event) {
+    void signup(ActionEvent event) throws SQLException, ClassNotFoundException {
         String userName = this.userName.getText();
         String password = this.password.getText();
         String userId = this.userId.getText();
@@ -69,7 +70,7 @@ public class SignupPageController {
         }
     }
 
-    private boolean performSignup(String userName, String password, String userId) {
+    private boolean performSignup(String userName, String password, String userId) throws SQLException, ClassNotFoundException {
         //username and password combined to generate hashcode
         String combinedString = userName+password;
 

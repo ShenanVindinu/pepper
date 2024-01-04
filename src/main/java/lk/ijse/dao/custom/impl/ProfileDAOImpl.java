@@ -5,7 +5,6 @@ import lk.ijse.dao.custom.ProfileDAO;
 import lk.ijse.db.DbConnection;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,11 +39,6 @@ public class ProfileDAOImpl implements ProfileDAO {
         connection.setAutoCommit(true);
 
     }
-
-
-
-
-
 
 
     public List<String> get() throws SQLException, ClassNotFoundException {
