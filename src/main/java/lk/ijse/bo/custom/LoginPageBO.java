@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 public interface LoginPageBO {
 
-    public String getUserIdByHash(String sha1Hex) throws SQLException;
+    public String getUserIdByHash(String sha1Hex) throws SQLException, ClassNotFoundException;
 
 
 }

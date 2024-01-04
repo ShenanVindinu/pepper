@@ -30,7 +30,7 @@ public class LoginPageController {
 
 
     @FXML
-    public void login(ActionEvent event) throws IOException, SQLException {
+    public void login(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         String username = userName.getText();
         String password = passwordField.getText();
 
@@ -56,7 +56,7 @@ public class LoginPageController {
     }
 
 
-    private boolean performLogin(String username, String password) throws SQLException {
+    private boolean performLogin(String username, String password) throws SQLException, ClassNotFoundException {
 
         String combinedString = username+password;
 
