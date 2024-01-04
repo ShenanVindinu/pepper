@@ -92,7 +92,7 @@ public class WishlistController implements Initializable {
                 ObservableList<RecipeDto> data = FXCollections.observableArrayList(wishlistItems);
                 recipeTable.setItems(data);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

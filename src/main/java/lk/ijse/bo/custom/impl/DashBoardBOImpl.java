@@ -13,7 +13,7 @@ public class DashBoardBOImpl implements DashBoardBO {
     RecipeDAO recipeDAO = new RecipeDAOImpl();
 
 
-    public List<RecipeDto> findRecipesByIngredient(String ingredient) throws SQLException {
+    public List<RecipeDto> findRecipesByIngredient(String ingredient) throws SQLException, ClassNotFoundException {
         return recipeDAO.findRecipesByIngredients(ingredient);
     }
 

@@ -12,7 +12,7 @@ public class WishlistBOImpl implements WishlistBO {
 
     WishListDAO wishListDAO = new WishListDAOImpl();
 
-    public List<RecipeDto> getWishlistItems() throws SQLException {
+    public List<RecipeDto> getWishlistItems() throws SQLException, ClassNotFoundException {
         return wishListDAO.get();
     }
 

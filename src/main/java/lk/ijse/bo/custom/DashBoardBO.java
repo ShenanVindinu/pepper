@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DashBoardBO {
 
-    public List<RecipeDto> findRecipesByIngredient(String ingredient) throws SQLException;
+    public List<RecipeDto> findRecipesByIngredient(String ingredient) throws SQLException, ClassNotFoundException;
     public void addRecipeToWishlist(String recipeId) throws SQLException, ClassNotFoundException;
 
 

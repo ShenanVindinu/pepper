@@ -63,7 +63,7 @@ public class DashboardController {
 
 
     @FXML
-    void searchRecipe(ActionEvent event) throws SQLException {
+    void searchRecipe(ActionEvent event) throws SQLException, ClassNotFoundException {
         String enteredIngredients = searchBar.getText(); // Get entered ingredients
 
 

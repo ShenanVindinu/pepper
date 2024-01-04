@@ -7,5 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface RecipeDAO extends CrudDAO<RecipeDto> {
-    public List<RecipeDto> findRecipesByIngredients(String enteredIngredients) throws SQLException;
+
+    public List<RecipeDto> findRecipesByIngredients(String enteredIngredients) throws SQLException, ClassNotFoundException;
+
 }
