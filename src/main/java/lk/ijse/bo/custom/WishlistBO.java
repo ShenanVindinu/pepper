@@ -9,6 +9,6 @@ public interface WishlistBO {
 
     public List<RecipeDto> getWishlistItems() throws SQLException, ClassNotFoundException;
 
-    public void clearWishlist() throws SQLException;
+    public void clearWishlist() throws SQLException, ClassNotFoundException;
 
 }

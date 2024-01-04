@@ -1,5 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
+import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.WishListDAO;
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.RecipeDto;
@@ -15,39 +16,13 @@ public class WishListDAOImpl implements WishListDAO {
 
 
     @Override
-    public void clearWishlist() throws SQLException {
-        Connection connection;
-        PreparedStatement statement;
-
-        connection = DbConnection.getInstance().getConnection();
-
-        String sql = "DELETE FROM wish_list";
-
-        statement = connection.prepareStatement(sql);
-        int rowsAffected = statement.executeUpdate();
-
-        System.out.println(rowsAffected + " rows deleted from the wishlist table");
+    public void clearWishlist() throws SQLException, ClassNotFoundException {
+        SQLUtil.execute("DELETE FROM wish_list");
     }
 
     @Override
-    public void add(String recipeId) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement preparedStatement = null;
-
-        try {
-            // Insert the recipe ID into the wishlist table
-            String insertQuery = "INSERT INTO wish_list (recipe_id) VALUES (?)";
-            preparedStatement = connection.prepareStatement(insertQuery);
-            preparedStatement.setString(1, recipeId);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources in the finally block
-            if (preparedStatement != null) {
-                preparedStatement.close();
-            }
-        }
+    public void add(String recipeId) throws SQLException, ClassNotFoundException {
+        SQLUtil.execute("INSERT INTO wish_list (recipe_id) VALUES (?)", recipeId);
     }
 
     @Override
@@ -81,7 +56,6 @@ public class WishListDAOImpl implements WishListDAO {
                 statement.close();
             }
         }
-
         return wishlistItems;
     }
 

@@ -147,7 +147,7 @@ public class WishlistController implements Initializable {
     }
 
     @FXML
-    void clearWishlist(ActionEvent event) throws SQLException {
+    void clearWishlist(ActionEvent event) throws SQLException, ClassNotFoundException {
         wishlistBO.clearWishlist();
         // Clear the existing data in the table view
         recipeTable.getItems().clear();

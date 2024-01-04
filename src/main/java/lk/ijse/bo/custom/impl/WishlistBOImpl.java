@@ -16,7 +16,7 @@ public class WishlistBOImpl implements WishlistBO {
         return wishListDAO.get();
     }
 
-    public void clearWishlist() throws SQLException {
+    public void clearWishlist() throws SQLException, ClassNotFoundException {
         wishListDAO.clearWishlist();
     }
 
