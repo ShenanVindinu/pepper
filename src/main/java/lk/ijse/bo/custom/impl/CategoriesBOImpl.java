@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.CategoriesBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.RecipeDAO;
 import lk.ijse.dao.custom.impl.RecipeDAOImpl;
 import lk.ijse.dto.RecipeDto;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class CategoriesBOImpl implements CategoriesBO {
 
-    RecipeDAO recipeDAO = new RecipeDAOImpl();
+    RecipeDAO recipeDAO = (RecipeDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.RECIPE);
 
     public List<RecipeDto> getFoods(String category) throws SQLException {
 
