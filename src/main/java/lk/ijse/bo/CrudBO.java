@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CrudBO<T> extends SuperBO {
 
-    public List<T> getFoods(String category) throws SQLException;
+    List<T> getFoods(String category) throws SQLException;
 
 }

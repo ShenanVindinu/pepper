@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface RecipeDAO extends CrudDAO<RecipeDto> {
 
-    public List<RecipeDto> findRecipesByIngredients(String enteredIngredients) throws SQLException, ClassNotFoundException;
+    List<RecipeDto> findRecipesByIngredients(String enteredIngredients) throws SQLException, ClassNotFoundException;
 
 }

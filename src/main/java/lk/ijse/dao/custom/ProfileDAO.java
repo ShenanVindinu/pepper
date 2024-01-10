@@ -6,6 +6,6 @@ import java.sql.SQLException;
 
 public interface ProfileDAO extends CrudDAO {
 
-    public void add(String c) throws SQLException, ClassNotFoundException;
+    void add(String c) throws SQLException, ClassNotFoundException;
 
 }

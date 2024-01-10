@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public interface WishListDAO extends CrudDAO<RecipeDto> {
 
-    public void clearWishlist() throws SQLException, ClassNotFoundException;
+    void clearWishlist() throws SQLException, ClassNotFoundException;
 
 
 }

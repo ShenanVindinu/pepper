@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public interface UserDAO extends SuperDAO {
 
-    public boolean saveToDatabase(UserDto userDto) throws SQLException, ClassNotFoundException;
-    public String getUserIdByHash(String sha1Hash) throws SQLException, ClassNotFoundException;
+    boolean saveToDatabase(UserDto userDto) throws SQLException, ClassNotFoundException;
+    String getUserIdByHash(String sha1Hash) throws SQLException, ClassNotFoundException;
 
 }

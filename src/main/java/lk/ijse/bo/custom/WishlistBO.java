@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface WishlistBO extends SuperBO {
 
-    public List<RecipeDto> getWishlistItems() throws SQLException, ClassNotFoundException;
+    List<RecipeDto> getWishlistItems() throws SQLException, ClassNotFoundException;
 
-    public void clearWishlist() throws SQLException, ClassNotFoundException;
+    void clearWishlist() throws SQLException, ClassNotFoundException;
 
 }

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public interface SignupPageBO extends SuperBO {
 
 
-    public boolean saveUser(UserDto userDto) throws SQLException, ClassNotFoundException;
+    boolean saveUser(UserDto userDto) throws SQLException, ClassNotFoundException;
 
 
 

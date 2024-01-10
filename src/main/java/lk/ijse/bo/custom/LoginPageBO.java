@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public interface LoginPageBO extends SuperBO {
 
-    public String getUserIdByHash(String sha1Hex) throws SQLException, ClassNotFoundException;
+    String getUserIdByHash(String sha1Hex) throws SQLException, ClassNotFoundException;
 
 
 }

@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface DashBoardBO extends SuperBO {
 
-    public List<RecipeDto> findRecipesByIngredient(String ingredient) throws SQLException, ClassNotFoundException;
-    public void addRecipeToWishlist(String recipeId) throws SQLException, ClassNotFoundException;
+    List<RecipeDto> findRecipesByIngredient(String ingredient) throws SQLException, ClassNotFoundException;
+    void addRecipeToWishlist(String recipeId) throws SQLException, ClassNotFoundException;
 
 
 }

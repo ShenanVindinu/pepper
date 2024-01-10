@@ -8,8 +8,8 @@ import java.util.List;
 public interface ProfileBO extends SuperBO {
 
 
-    public void excludeIngredient(String ingredient) throws SQLException, ClassNotFoundException;
-    public List<String> getAllergicIngredients() throws SQLException, ClassNotFoundException;
+    void excludeIngredient(String ingredient) throws SQLException, ClassNotFoundException;
+    List<String> getAllergicIngredients() throws SQLException, ClassNotFoundException;
 
 
 
