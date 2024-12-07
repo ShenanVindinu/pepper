@@ -301,7 +301,7 @@ INSERT INTO pepper.category (category_name, recipe_id) VALUES ('Italian', '52');
 INSERT INTO pepper.category (category_name, recipe_id) VALUES ('Seafood', '53');
 
 
-    --use shrimp or honey to test transaction model. they are unique recipes.
+    -- use shrimp or honey to test transaction model. they are unique recipes.
 
 
 
